@@ -1,25 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import {Routes, Route} from 'react-router-dom'
+import BattleGround from "./Components/battleGround/BattleGround";
+import MainMenu from "./Components/MainMenu";
+import Context from "./context";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let [heroes, setHeroes] = React.useState([{
+        role: 'tank',
+        name: 'Grog',
+        hp: 5,
+        damage: 2,
+        atkSpeed: 2000,
+        defence: 10,
+        lvl: 1,
+        id: Math.random()
+    },])
+    let [user, setUser] = React.useState({
+        gold: 1,
+        lvl: 1,
+        campainLvl: 1,
+        name: 'stAss',
+        heroesPull: [
+            {role: 'dd', name: 'Angry', hp: 2, damage: 5, atkSpeed: 3000, defence: 2, lvl: 1, id: Math.random()},
+            {role: 'heal', name: 'Mola', hp: 5, damage: 2, atkSpeed: 2000, defence: 10, lvl: 1, id: Math.random()},
+            {role: 'tank', name: 'Jaj', hp: 5, damage: 2, atkSpeed: 2000, defence: 10, lvl: 1, id: Math.random()},
+            {role: 'dd', name: 'Remound', hp: 2, damage: 5, atkSpeed: 3000, defence: 2, lvl: 1, id: Math.random()},
+            {role: 'heal', name: 'Baptized', hp: 5, damage: 2, atkSpeed: 2000, defence: 10, lvl: 1, id: Math.random()}],
+        itemPull: [],
+    })
+
+    return (
+<Context.Provider value={{user}}>
+        <Routes>
+            <Route path='*' element={MainMenu({heroes, setHeroes, user, setUser})}/>
+            <Route path='/BattleGround/*' element={BattleGround({heroes, setHeroes, user, setUser})}/>
+            <Route path='MainMenu/*' element={MainMenu({heroes, setHeroes, user, setUser})}/>
+        </Routes>
+</Context.Provider>
+
+    )
 }
 
+
 export default App;
+
