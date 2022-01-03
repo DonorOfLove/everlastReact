@@ -21,7 +21,7 @@ const Heroes = (props) => {
     const remove = (id, hero) => {
         const newUserHeroes=user.heroesPull.concat(hero)
         setUser( {...user,heroesPull:newUserHeroes})
-        user.heroesPull.push(hero)
+
         const newHeroes = heroes.filter((hero) => hero.id !== id);
         setHeroes(newHeroes);
     }

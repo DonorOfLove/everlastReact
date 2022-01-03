@@ -1,4 +1,8 @@
-html, body {
+@font-face {
+    font-family: 'pixel';
+    src: local('pixel'),
+    url("style/Fifaks10Dev1.ttf");
+}html, body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -8,6 +12,8 @@ html, body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 5vw;
+    font-family: 'pixel';
+
 
 
 }
@@ -20,6 +26,7 @@ ul, li {
 
 p {
     white-space: pre-line;
+
 }
 
 a {
@@ -88,6 +95,8 @@ a {
     flex-grow: 0; /*Запрещаем увеличиваться*/
     flex-shrink: 0; /*Запрещаем сжиматься*/
     flex-basis: auto;
+    text-align: center;
+    line-height:7vw
 }
 
 .footer a {
