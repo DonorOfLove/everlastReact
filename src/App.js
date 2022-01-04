@@ -6,12 +6,13 @@ import MainMenu from "./Components/MainMenu";
 import Context from "./context";
 import witchIdle from "./style/animations/B_witch.gif"
 import whichAtck from "./style/animations/B_witchAtck.gif"
-import redHoodAtck from './style/animations/redHoodAtck.gif'
+
 
 
 function App() {
     let [heroes, setHeroes] = React.useState([{role: 'dd', name: 'Angry', hp: 5, damage: 3, atkSpeed: 3000, defence: 2, lvl: 1, id: Math.random(),key:Math.random(),animation:witchIdle,idle:witchIdle,atck:whichAtck,}])
     let [user, setUser] = React.useState({
+        bgLoad:false,
         gold: 1,
         lvl: 1,
         campainLvl: 1,
@@ -25,6 +26,7 @@ function App() {
             defence: 10,
             lvl: 1,
             id: Math.random(),
+
         },
             {role: 'heal', name: 'Mola', hp: 5, damage: 2, atkSpeed: 2000, defence: 10, lvl: 1, id: Math.random(),key:Math.random()},
             {role: 'tank', name: 'Jaj', hp: 5, damage: 2, atkSpeed: 2000, defence: 10, lvl: 1, id: Math.random(),key:Math.random()},
@@ -36,7 +38,6 @@ function App() {
     return (
 <Context.Provider value={{user}}>
         <Routes>
-
             <Route path='*' element={MainMenu({heroes, setHeroes, user, setUser})}/>
             <Route path='/BattleGround/*' element={BattleGround({heroes, setHeroes, user, setUser})}/>
             <Route path='MainMenu/*' element={MainMenu({heroes, setHeroes, user, setUser})}/>

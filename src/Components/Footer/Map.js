@@ -1,17 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Hero from "../../unitsScripts/Hero";
 import {Link} from 'react-router-dom'
 
 
-
 const Map = (props) => {
-    let heroes = props.state.heroes
-    let user=props.state.user
+    const heroes = props.state.heroes
+    const user = props.state.user
+    const setUser = props.state.setUser
+
 
     const styles = {
         justifyContent: 'center',
         padding: '40px'
     }
+    useEffect(() => {
+        setUser({...user,bgLoad:true})
+    }, [])
+
 
     function battlePower() {
         let bp = 0
