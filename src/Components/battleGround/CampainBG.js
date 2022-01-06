@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import BattleHero from "../../unitsScripts/BattleHero";
 import Enemy from "../../unitsScripts/Enemy";
 
-
 const CampainBG = (props) => {
 
     let heroes = props.state.heroes
@@ -10,6 +9,7 @@ const CampainBG = (props) => {
     let setEnemys = props.setEnemys
     let setHeroes = props.state.setHeroes
     const user = props.user
+    const winCheck = React.useRef()
 
     function checkNoBack(timer) {
         if (window.location.href !== 'http://localhost:3000/BattleGround/CampainBG') {
@@ -17,12 +17,11 @@ const CampainBG = (props) => {
         }
     }
 
-    const winCheck = React.useRef()
-
     useEffect(function func() {
         if (!user.bgLoad) {
             window.location.href = "http://localhost:3000/map"
         }
+        sessionStorage.setItem('heroes',JSON.stringify(heroes))
         for (let hero of heroes) {
             const timer = setInterval(() => {
                 checkNoBack(timer)
@@ -34,7 +33,6 @@ const CampainBG = (props) => {
                         const enemyWithNewHP = enemys[randomInt].hp - hero.damage
                         const newEnemy = enemys[randomInt]
                         newEnemy.hp = enemyWithNewHP
-
                         setEnemys([...enemys], {newEnemy})
                         setEnemys(enemys = enemys.filter(thisTarget => thisTarget.hp > 0))
                     } catch (e) {
@@ -71,17 +69,26 @@ const CampainBG = (props) => {
                         winCheck.current = false
                         clearInterval(timer)
                     }
-
                 }
             }, enemy.atkSpeed)
         }
     }, [])
-    React.useLayoutEffect(() => {
-        if (winCheck) {
-            alert('win')
-        }else {alert('lose')}
-    }, [winCheck])
 
+    React.useEffect(() => {
+
+        if (winCheck.current === true) {
+            alert('win')
+            setHeroes([...JSON.parse(sessionStorage.getItem('heroes'))])
+            console.log(heroes)
+            window.location.href = "http://localhost:3000/map"
+        }
+        if (winCheck.current === false) {
+            alert('lose')
+            setHeroes([...JSON.parse(sessionStorage.getItem('heroes'))])
+            window.location.href = "http://localhost:3000/map"
+        }
+
+    }, [winCheck.current])
     return (
         <div className={'BGWrap'}>
             <div className={'CampainBG'}>
@@ -90,7 +97,9 @@ const CampainBG = (props) => {
                                         key={hero.key}
                                         animation={hero.animation}
                     />)
+                    
                 })}
+
             </div>
             {enemys.map((enemy) => {
                 return (<Enemy enemy={enemy}
