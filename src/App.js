@@ -17,6 +17,8 @@ function App() {
         lvl: 1,
         campainLvl: 1,
         name: 'stAss',
+        modalVision: false,
+        modalText: 'ezpezy sosite mobi',
         heroesPull: [{
             role: 'tank',
             name: 'Grog',
@@ -26,7 +28,6 @@ function App() {
             defence: 10,
             lvl: 1,
             id: Math.random(),
-
         },
             {role: 'heal', name: 'Mola', hp: 5, damage: 2, atkSpeed: 2000, defence: 10, lvl: 1, id: Math.random(),key:Math.random()},
             {role: 'tank', name: 'Jaj', hp: 5, damage: 2, atkSpeed: 2000, defence: 10, lvl: 1, id: Math.random(),key:Math.random()},

@@ -4,7 +4,7 @@ import CampainBG from "./CampainBG";
 
 const BattleGround = (props) => {
     const user = props.user
-    const setUser=props.setUser
+    const setUser = props.setUser
 
     // function kof() {
     //     let k = user.campainLvl * 4
@@ -34,8 +34,9 @@ const BattleGround = (props) => {
                 <Route path='CampainBG' element={<CampainBG state={props}
                                                             enemys={enemys}
                                                             setEnemys={setEnemys}
-                    user={user}/>}
-                setUser={setUser}/>
+                                                            setUser={setUser}
+                                                            user={user}/>}
+                />
             </Routes>
 
         </div>

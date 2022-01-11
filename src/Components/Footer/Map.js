@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Hero from "../../unitsScripts/Hero";
 import {Link} from 'react-router-dom'
+import Modal from "../Modal";
 
 
 const Map = (props) => {
@@ -28,6 +29,9 @@ const Map = (props) => {
 
     return (
         <div className='map'>
+
+            { (user.modalVision) ? <Modal setUser={setUser} user={user}/> : null }
+
             <span>battle power: {battlePower()}</span>
             <div className='heroes' style={styles}>
                 {heroes.map((hero, index) => {
