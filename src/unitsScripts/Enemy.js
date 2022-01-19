@@ -1,8 +1,4 @@
-import React, { useContext} from 'react';
-import Context from "../context";
-import Boss from "../Components/battleGround/Boss";
-
-import Creep from "../Components/battleGround/Creep";
+import React from 'react';
 
 const Enemy = (props) => {
 

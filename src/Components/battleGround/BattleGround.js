@@ -1,19 +1,20 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom'
-import CampainBG from "./CampainBG";
+import CampaignBG from "./CampaignBG";
+import EverlastTower from "./EverlastTower";
 
 const BattleGround = (props) => {
     const user = props.user
     const setUser = props.setUser
 
     // function kof() {
-    //     let k = user.campainLvl * 4
+    //     let k = user.campaignLvl * 4
     //     return k
     // }
 
-    let [enemys, setEnemys] = React.useState(
+    let [enemies, setEnemies] = React.useState(
         () => {
-            if (user.campainLvl % 5 == 0) {
+            if (user.campaignLvl % 5 == 0) {
                 return [{hp: 20, damage: 5, atkSpeed: 3000, defence: 10}]
             } else {
                 return [{hp: 5, damage: 1, atkSpeed: 3000, defence: 1, id: Math.random()},
@@ -22,23 +23,28 @@ const BattleGround = (props) => {
                 ]
             }
         }
-        // [{hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
+        // [{hp: 5, damage: 1, atkSpeed: 3000, defencea: 1, key: Math.random()},
         //         {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key :Math.random()},
         //          {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
         //      ]
     )
 
     return (
-        <div className={'CampainBG'}>
+        <div className={'CampaignBG'}>
             <Routes>
-                <Route path='CampainBG' element={<CampainBG state={props}
-                                                            enemys={enemys}
-                                                            setEnemys={setEnemys}
-                                                            setUser={setUser}
-                                                            user={user}/>}
+                <Route path='CampaignBG' element={<CampaignBG state={props}
+                                                              enemies={enemies}
+                                                              setEnemies={setEnemies}
+                                                              setUser={setUser}
+                                                              user={user}/>}
+                />
+                <Route path='EverlastTower' element={<EverlastTower state={props}
+                                                                    enemies={enemies}
+                                                                    setEnemies={setEnemies}
+                                                                    setUser={setUser}
+                                                                    user={user}/>}
                 />
             </Routes>
-
         </div>
     );
 };

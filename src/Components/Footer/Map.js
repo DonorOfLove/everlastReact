@@ -29,9 +29,7 @@ const Map = (props) => {
 
     return (
         <div className='map'>
-
             { (user.modalVision) ? <Modal setUser={setUser} user={user}/> : null }
-
             <span>battle power: {battlePower()}</span>
             <div className='heroes' style={styles}>
                 {heroes.map((hero, index) => {
@@ -41,8 +39,10 @@ const Map = (props) => {
                     />)
                 })}
             </div>
-
-            <Link to='/BattleGround/CampainBG'>Start level: {user.campainLvl}</Link>
+            <div className='level__option'>
+            <Link to='/BattleGround/EverlastTower'>Everlast Tower</Link>
+            <Link to='/BattleGround/CampaignBG'>level: {user.campaignLvl}</Link>
+            </div>
         </div>
     );
 };

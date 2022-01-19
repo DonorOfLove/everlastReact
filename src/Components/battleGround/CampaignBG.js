@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import BattleHero from "../../unitsScripts/BattleHero";
 import Enemy from "../../unitsScripts/Enemy";
 
-const CampainBG = (props) => {
+const CampaignBG = (props) => {
 
     let heroes1 = props.state.heroes
-    let enemys = props.enemys
-    let setEnemys = props.setEnemys
+    let enemies = props.enemies
+    let setEnemies = props.setEnemies
     const user = props.user
     const setUser = props.setUser
     const winCheck = React.useRef()
@@ -14,7 +14,7 @@ const CampainBG = (props) => {
 
 
     function checkNoBack(timer) {
-        if (window.location.href !== 'http://localhost:3000/BattleGround/CampainBG') {
+        if (window.location.href !== 'http://localhost:3000/BattleGround/CampaignBG') {
             clearInterval(timer)
         }
     }
@@ -29,30 +29,30 @@ const CampainBG = (props) => {
                 setHeroes([...heroes], hero.animation = hero.atck)
                 if (hero.hp > 0) {
                     try {
-                        const randomInt = Math.floor(Math.random() * enemys.length)
-                        const enemyWithNewHP = enemys[randomInt].hp - hero.damage
-                        const newEnemy = enemys[randomInt]
+                        const randomInt = Math.floor(Math.random() * enemies.length)
+                        const enemyWithNewHP = enemies[randomInt].hp - hero.damage
+                        const newEnemy = enemies[randomInt]
                         newEnemy.hp = enemyWithNewHP
-                        setEnemys([...enemys], {newEnemy})
-                        setEnemys(enemys = enemys.filter(thisTarget => thisTarget.hp > 0))
+                        setEnemies([...enemies], {newEnemy})
+                        setEnemies(enemies = enemies.filter(thisTarget => thisTarget.hp > 0))
                     } catch (e) {
                         winCheck.current = true
                         clearInterval(timer)
                     }
-                    if (heroes.length == 0 || enemys.length == 0 || window.location.href !== 'http://localhost:3000/BattleGround/CampainBG') {
+                    if (heroes.length == 0 || enemies.length == 0 || window.location.href !== 'http://localhost:3000/BattleGround/CampaignBG') {
                         clearInterval(timer)
                     }
-                    setTimeout(() => setHeroes([...heroes], hero.animation = hero.idle), 900)
+                    setTimeout(() => setHeroes([...heroes], hero.animation = hero.idle), hero.animationSpeed)
                 }
             }, hero.atkSpeed)
         }
     }, [])
 
     useEffect(function func() {
-        for (let enemy of enemys) {
+        for (let enemy of enemies) {
             const timer = setInterval(() => {
                 checkNoBack(timer)
-                if (window.location.href !== 'http://localhost:3000/BattleGround/CampainBG') {
+                if (window.location.href !== 'http://localhost:3000/BatзtleGround/CampaignBG') {
                     clearInterval(timer)
                 }
                 if (enemy.hp > 0) {
@@ -86,7 +86,7 @@ const CampainBG = (props) => {
     }, [winCheck.current])
     return (
         <div className={'BGWrap'}>
-            <div className={'CampainBG'}>
+            <div className={'BG__heroes'}>
                 {heroes.map((hero) => {
                     return (<BattleHero hero={hero}
                                         key={hero.key}
@@ -96,13 +96,14 @@ const CampainBG = (props) => {
                 })}
 
             </div>
-            {enemys.map((enemy) => {
-                return (<Enemy enemy={enemy}
-                               key={enemy.key}
-                />)
-            })}
+            <div className={'BG__enemies'}>
+                {enemies.map((enemy) => {
+                    return (<Enemy enemy={enemy}
+                                   key={enemy.key}
+                    />)
+                })}</div>
         </div>
     );
 };
 
-export default CampainBG;
+export default CampaignBG;
