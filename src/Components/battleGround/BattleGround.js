@@ -17,9 +17,8 @@ const BattleGround = (props) => {
             if (user.campaignLvl % 5 == 0) {
                 return [{hp: 20, damage: 5, atkSpeed: 3000, defence: 10}]
             } else {
-                return [{hp: 5, damage: 1, atkSpeed: 3000, defence: 1, id: Math.random()},
-                    {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, id: Math.random()},
-                    {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, id: Math.random()},
+                return [{hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
+
                 ]
             }
         }

@@ -1,20 +1,25 @@
-import React from 'react';
+import React,{useEffect,useContext} from 'react';
 import BattleHero from "../../unitsScripts/BattleHero";
 import Enemy from "../../unitsScripts/Enemy";
-
+import Context from "../../context";
+import {logDOM} from "@testing-library/react";
 
 
 const EverlastTower = (props) => {
-    let heroes1 = props.state.heroes
-    let enemies = props.enemies
-    let setEnemies = props.setEnemies
-    const user = props.user
-    const setUser = props.setUser
-    const winCheck = React.useRef()
-    let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(heroes1)))
-    const reward = React.useRef()
+    const context=useContext(Context)
+    let enemies=context.classEn
+    let heroes=context.classHeroes
 
 
+        function atck(hero){
+       setInterval(()=>{
+               console.log(hero)
+           enemies[0].getDamage(hero.damage)
+               console.log( enemies[0].hp)}
+       ,3000)
+
+
+   }
     return (
         <div className={'BGWrap'}>
             <div className={'BG__heroes'}>
@@ -22,8 +27,8 @@ const EverlastTower = (props) => {
                     return (<BattleHero hero={hero}
                                         key={hero.key}
                                         animation={hero.animation}
+                                        atck={atck(hero)}
                     />)
-
                 })}
 
             </div>
@@ -32,7 +37,8 @@ const EverlastTower = (props) => {
                     return (<Enemy enemy={enemy}
                                    key={enemy.key}
                     />)
-                })}</div>
+                })}
+            </div>
         </div>
     );
 };
