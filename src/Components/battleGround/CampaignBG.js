@@ -3,14 +3,11 @@ import BattleHero from "../../unitsScripts/BattleHero";
 import Enemy from "../../unitsScripts/Enemy";
 
 const CampaignBG = (props) => {
-
-    let heroes1 = props.state.heroes
-    let enemies = props.enemies
-    let setEnemies = props.setEnemies
     const user = props.user
     const setUser = props.setUser
     const winCheck = React.useRef()
-    let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(heroes1)))
+    let [enemies,setEnemies]=React.useState(JSON.parse(JSON.stringify(props.enemies)))
+    let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(props.state.heroes)))
 
 
     function checkNoBack(timer) {
@@ -23,6 +20,7 @@ const CampaignBG = (props) => {
         if (!user.bgLoad) {
             window.location.href = "http://localhost:3000/map"
         }
+
         for (let hero of heroes) {
             const timer = setInterval(() => {
                 checkNoBack(timer)
@@ -36,6 +34,7 @@ const CampaignBG = (props) => {
                         setEnemies([...enemies], {newEnemy})
                         setEnemies(enemies = enemies.filter(thisTarget => thisTarget.hp > 0))
                     } catch (e) {
+                        setHeroes([...heroes], hero.animation = hero.idle)
                         winCheck.current = true
                         clearInterval(timer)
                     }
@@ -72,18 +71,16 @@ const CampaignBG = (props) => {
         }
     }, [])
     React.useEffect(() => {
-
         if (winCheck.current === true) {
             window.history.back(-1)
-            setUser({...user, modalText: 'iziPizi sosite mobi', modalVision: true})
+            setUser({...user, modalText: 'iziPizi sosite mobi', modalVision: true,gold:user.campaignLvl*100,campaignLvl:user.campaignLvl+1})
         }
         if (winCheck.current === false) {
             window.history.back(-1)
             setUser({...user, modalVision: true, modalText: 'better luck next time('})
-
-
         }
     }, [winCheck.current])
+
     return (
         <div className={'BGWrap'}>
             <div className={'BG__heroes'}>

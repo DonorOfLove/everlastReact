@@ -7,7 +7,6 @@ const Enemy = (props) => {
     return (
         <div>
             {enemy.hp}
-
         </div>
     );
 };
