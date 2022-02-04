@@ -42,6 +42,7 @@ const Map = (props) => {
             <div className='level__option'>
             <Link to='/BattleGround/EverlastTower'>Everlast Tower</Link>
             <Link to='/BattleGround/CampaignBG'>level: {user.campaignLvl}</Link>
+                <Link to='/BattleGround/Immortal'>Immortal</Link>
             </div>
         </div>
     );

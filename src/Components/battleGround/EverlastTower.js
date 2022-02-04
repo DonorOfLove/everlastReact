@@ -2,16 +2,17 @@ import React, {useEffect, useContext} from 'react';
 import BattleHero from "../../unitsScripts/BattleHero";
 import Enemy from "../../unitsScripts/Enemy";
 import Context from "../../context";
-import {cleanup} from "@testing-library/react";
 
 const EverlastTower = (props) => {
     const context = useContext(Context)
-    const [user,setUser]=[context.user,context.setUser]
-    let enemies = props.enemies
-    let setEnemies = props.setEnemies
-
-    let [winCounter, setwWinCounter] = React.useState(0)
-    let [heroes,setHeroes]=React.useState(JSON.parse(JSON.stringify(props.state.heroes)))
+    const [user, setUser] = [context.user, context.setUser]
+    let [enemies, setEnemies] = React.useState([
+        {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
+        {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
+        {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()}
+    ])
+    let [stage, setStage] = React.useState(0)
+    let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(props.state.heroes)))
 
 
     function checkNoBack(timer) {
@@ -19,6 +20,7 @@ const EverlastTower = (props) => {
             clearInterval(timer)
         }
     }
+
     function heroesAtck() {
         if (!user.bgLoad) {
             window.location.href = "http://localhost:3000/map"
@@ -35,16 +37,14 @@ const EverlastTower = (props) => {
                         setEnemies([...enemies], {newEnemy})
                         setEnemies(enemies = enemies.filter(thisTarget => thisTarget.hp > 0))
                     } catch (e) {
-                        setwWinCounter(winCounter + 1)
+                        setStage(stage + 1)
                         setHeroes([...heroes], hero.animation = hero.idle)
                         clearInterval(timer)
-                        return
                     }
                     if (heroes.length == 0 || enemies.length == 0) {
                         clearInterval(timer)
                     }
                     setTimeout(() => setHeroes([...heroes], hero.animation = hero.idle), hero.animationSpeed)
-
                 }
             }, hero.atkSpeed)
         }
@@ -64,32 +64,36 @@ const EverlastTower = (props) => {
                         const newHero = heroes[randomInt]
                         newHero.hp = heroWithNewHP
                         setHeroes([...heroes], {newHero})
+                        console.log('s')
                         setHeroes([...heroes = heroes.filter(thisTarget => thisTarget.hp > 0)])
                     } catch (e) {
-
                         clearInterval(timer)
-                        window.history.back(-1)
-                        setUser({...user, modalVision: true, modalText: 'better luck next time('})
-                        return cleanup()
                     }
                 }
             }, enemy.atkSpeed)
         }
     }, [])
-    useEffect(() =>{
+
+    useEffect(() => {
         console.log('s')
-        setEnemies(enemies = [{hp: 5, damage: 3, atkSpeed: 3000, defence: 1, key: Math.random()}, {
-            hp: 5,
-            damage: 3,
-            atkSpeed: 3000,
-            defence: 1,
-            key: Math.random()
-        }, {hp: 5, damage: 3, atkSpeed: 3000, defence: 1, key: Math.random()}])
+        setEnemies(enemies = [
+            {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
+            {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
+            {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()}
+        ])
         heroesAtck()
-    }, [winCounter])
+    }, [stage])
+
+    useEffect(() => {
+        if (heroes.length == 0) {
+            window.history.back(-1)
+            setUser({...user, modalVision: true, modalText: 'better luck next time(', gold: user.gold + stage * 100})
+        }
+    }, [heroes])
 
     return (
         <div className={'BGWrap'}>
+            <div className='stage'>stage:{stage}</div>
             <div className={'BG__heroes'}>
                 {heroes.map((hero) => {
                     return (<BattleHero hero={hero}

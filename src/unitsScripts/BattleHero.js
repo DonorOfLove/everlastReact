@@ -5,9 +5,8 @@ const BattleHero = ({hero,animation}) => {
 
     return (
 
-        <div>{hero.hp}
+        <div><div className='hp__bar'>{hero.hp}</div>
             <img src={animation} alt="" width={300}height={160}/>
-
         </div>
     );
 };
