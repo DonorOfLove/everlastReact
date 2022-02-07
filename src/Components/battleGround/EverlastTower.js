@@ -75,7 +75,6 @@ const EverlastTower = (props) => {
     }, [])
 
     useEffect(() => {
-        console.log('s')
         setEnemies(enemies = [
             {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
             {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
@@ -85,9 +84,10 @@ const EverlastTower = (props) => {
     }, [stage])
 
     useEffect(() => {
+        setUser({...user, modalVision: true, modalText: 'better luck next time(', gold: user.gold + stage * 100})
         if (heroes.length == 0) {
             window.history.back(-1)
-            setUser({...user, modalVision: true, modalText: 'better luck next time(', gold: user.gold + stage * 100})
+
         }
     }, [heroes])
 

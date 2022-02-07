@@ -5,6 +5,8 @@
 }
 
 html, body {
+    background-color:  #191d24;
+color: #ececec;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -15,6 +17,7 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
     font-size: 5vw;
     font-family: 'pixel';
+
 }
 
 button {
@@ -48,13 +51,10 @@ a {
 .header {
     display: flex;
     justify-content: space-between;
-
 }
 
 /*------------store*/
-.store {
 
-}
 
 .chest {
     border: 3px solid saddlebrown;
@@ -71,15 +71,10 @@ a {
 
 }
 
-.start__btn {
-    width: 500px;
-    font-size: 75px;
-    margin: 0 auto;
-}
 
 .heroes {
     display: flex;
-
+    flex-wrap: wrap;
 }
 
 .main {
@@ -88,6 +83,7 @@ a {
     padding: 10px; /*отступы текста со всех сторон*/
     text-align: justify; /*выравнивание текста по левому и правому краям*/
     flex-grow: 1; /*Предписываем занять все свободное пространство*/
+    background-color: #191d24;
 }
 
 .footer {
@@ -103,8 +99,8 @@ a {
 }
 
 .footer a {
-    color: #800080;
-    border: 3px solid purple;
+    color: #e3e3e3;
+    border: 3px solid #614382;
     width: 34%;
     text-align: center;
 
@@ -119,15 +115,22 @@ a {
 
 
 .hero {
-    width: 130px;
+    min-width: 70px;
+    width: 13vw;
     display: flex;
-    font-size: 30px;
+    font-size: 3vw;
     flex-direction: row;
-    margin: 0 10px;
+    margin: 1vw;
     position: center;
     text-align: center;
     justify-content: center;
+}
 
+.hero:hover {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    margin: -0.1vw 0.5vw 2vw -0.2vw;
+    transition: 0.3s;
+    position: marker;
 }
 
 .BattleHero {
@@ -155,16 +158,6 @@ a {
     justify-content: space-between;
 }
 
-.boss {
-    margin-left: -300px;
-    position: absolute;
-    border: 5px solid red;
-    width: 300px;
-    height: 500px;
-    overflow: hidden;;
-
-}
-
 .BG__heroes {
     display: flex;
     flex-direction: column;
@@ -181,13 +174,6 @@ a {
 
 }
 
-.hero:hover {
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-    margin: -2px 4px 2px 4px;
-    transition: 0.3s;
-    position: marker;
-}
-
 
 .tank {
     border: 3px solid #282844;
@@ -196,10 +182,8 @@ a {
 }
 
 .heal {
-
     border: 3px solid green;
 }
-
 
 .dd {
     border: 3px solid red;
@@ -220,8 +204,9 @@ a {
 
 /* Modal Content */
 .modal-content {
+    color: #e3e3e3;
     text-align: center;
-    background-color: #fefefe;
+    background-color:   #191d24;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -230,16 +215,25 @@ a {
 }
 
 .modal__button {
+    color: #e3e3e3;
     width: 50%;
     height: 50px;
     background-color: #44858b;
-    font-size: 1.5vw;
+    font-size: 2vw;
 
 }
 
 .level__option {
     display: flex;
     justify-content: space-around;
+
+}
+.level__option a{
+    color: #a86de2
+}
+.level__option a:hover{
+    color: #6e4497;
+    transition: 0.3s;
 }
 
 .stage {

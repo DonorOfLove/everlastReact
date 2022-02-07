@@ -15,7 +15,7 @@ const Map = (props) => {
         padding: '40px'
     }
     useEffect(() => {
-        setUser({...user,bgLoad:true})
+        setUser({...user, bgLoad: true})
     }, [])
 
 
@@ -29,7 +29,7 @@ const Map = (props) => {
 
     return (
         <div className='map'>
-            { (user.modalVision) ? <Modal setUser={setUser} user={user}/> : null }
+            {(user.modalVision) ? <Modal setUser={setUser} user={user}/> : null}
             <span>battle power: {battlePower()}</span>
             <div className='heroes' style={styles}>
                 {heroes.map((hero, index) => {
@@ -40,8 +40,8 @@ const Map = (props) => {
                 })}
             </div>
             <div className='level__option'>
-            <Link to='/BattleGround/EverlastTower'>Everlast Tower</Link>
-            <Link to='/BattleGround/CampaignBG'>level: {user.campaignLvl}</Link>
+                <Link to='/BattleGround/EverlastTower'>Everlast Tower</Link>
+                <Link to='/BattleGround/CampaignBG'>level: {user.campaignLvl}</Link>
                 <Link to='/BattleGround/Immortal'>Immortal</Link>
             </div>
         </div>
