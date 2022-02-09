@@ -9,7 +9,7 @@ const Heroes = (props) => {
 
     const addToCamp = (id, hero) => {
         if (heroes.length === 3) {
-            alert('full')
+            setUser({...user,modalVision:true,modalText:'Ugg,it\'\s a bit crowded in here'})
         } else {
             setHeroes(heroes.concat(hero))
             const newHeroes = user.heroesPull.filter((hero) => hero.id !== id);

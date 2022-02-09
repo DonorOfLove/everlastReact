@@ -5,8 +5,9 @@
 }
 
 html, body {
-    background-color:  #191d24;
-color: #ececec;
+    width: 100%;
+    background-color: #191d24;
+    color: #ececec;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -145,15 +146,12 @@ a {
 }
 
 .hp__bar {
-    border: 2px solid #0edc0e;
     text-align: center;
     width: 15%;
-    background-color: green;
-
 }
 
 .BGWrap {
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
 }
@@ -161,7 +159,7 @@ a {
 .BG__heroes {
     display: flex;
     flex-direction: column;
-    margin: 50px;
+    margin: 5vw;
 }
 
 .stats {
@@ -206,20 +204,25 @@ a {
 .modal-content {
     color: #e3e3e3;
     text-align: center;
-    background-color:   #191d24;
+    background-color: #191d24;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 30%;
+    border-radius: 10px;
+    border: 0.3vw solid #614382;
 
 }
 
 .modal__button {
     color: #e3e3e3;
-    width: 50%;
+    width: 40%;
     height: 50px;
     background-color: #44858b;
     font-size: 2vw;
+    border: 0.3vw solid #614382;
+    border-radius: 5px;
+
 
 }
 
@@ -228,10 +231,12 @@ a {
     justify-content: space-around;
 
 }
-.level__option a{
+
+.level__option a {
     color: #a86de2
 }
-.level__option a:hover{
+
+.level__option a:hover {
     color: #6e4497;
     transition: 0.3s;
 }

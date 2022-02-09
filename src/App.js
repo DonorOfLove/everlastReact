@@ -8,6 +8,7 @@ import witchIdle from "./style/animations/B_witch.gif"
 import whichAtck from "./style/animations/B_witchAtck.gif"
 import warriorIdle from "./style/animations/warriorIdle.gif"
 import warriorAtck from "./style/animations/WarriorAtck.gif"
+import Modal from "./Components/Modal";
 
 function App() {
 
@@ -17,13 +18,14 @@ function App() {
     ])
 
     let [user, setUser] = React.useState({
+        immortalLastVisit:new Date(2022,1,8,4,0,0,0),
         bgLoad:false,
         gold: 1,
         lvl: 1,
-        campaignLvl: 4,
+        campaignLvl: 4 ,
         name: 'stAss',
         modalVision: false,
-        modalText: 'ezpezy sosite mobi',
+        modalText: 'something went wrong :,(',
         heroesPull: [{role: 'tank', name: 'Grog', hp: 2, damage: 1, atkSpeed: 3000, defence: 10, lvl: 1, id: Math.random(),},
             {role: 'heal', name: 'Mola', hp: 5, damage: 2, atkSpeed: 2000, defence: 10, lvl: 1, id: Math.random(),key:Math.random()},
             {role: 'dd', name: 'Remound', hp: 2, damage: 5, atkSpeed: 3000, defence: 2, lvl: 1, id: Math.random(),key:Math.random()},
@@ -33,6 +35,7 @@ function App() {
 
     return (
 <Context.Provider value={{user,setUser}}>
+    {(user.modalVision) ? <Modal setUser={setUser} user={user}/> : null}
         <Routes>
             <Route path='*' element={MainMenu({heroes, setHeroes, user, setUser})}/>
             <Route path='/BattleGround/*' element={BattleGround({heroes, setHeroes, user, setUser})}/>

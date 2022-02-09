@@ -4,11 +4,13 @@ import {Link} from 'react-router-dom'
 import Modal from "../Modal";
 
 
+
+
 const Map = (props) => {
     const heroes = props.state.heroes
     const user = props.state.user
     const setUser = props.state.setUser
-
+    const dataCheck=(Date.now()-user.immortalLastVisit)/1000/60/60
 
     const styles = {
         justifyContent: 'center',
@@ -29,7 +31,7 @@ const Map = (props) => {
 
     return (
         <div className='map'>
-            {(user.modalVision) ? <Modal setUser={setUser} user={user}/> : null}
+
             <span>battle power: {battlePower()}</span>
             <div className='heroes' style={styles}>
                 {heroes.map((hero, index) => {
@@ -42,7 +44,8 @@ const Map = (props) => {
             <div className='level__option'>
                 <Link to='/BattleGround/EverlastTower'>Everlast Tower</Link>
                 <Link to='/BattleGround/CampaignBG'>level: {user.campaignLvl}</Link>
-                <Link to='/BattleGround/Immortal'>Immortal</Link>
+                {dataCheck>24?(<Link to='/BattleGround/Immortal'>Immortal</Link>):(`come back in ${Math.round(24-dataCheck)} hours`)}
+
             </div>
         </div>
     );
