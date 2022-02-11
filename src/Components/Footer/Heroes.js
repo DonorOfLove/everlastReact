@@ -7,6 +7,7 @@ const Heroes = (props) => {
     let heroes = props.state.heroes
     let setHeroes = props.state.setHeroes
 
+
     const addToCamp = (id, hero) => {
         if (heroes.length === 3) {
             setUser({...user,modalVision:true,modalText:'Ugg,it\'\s a bit crowded in here'})
@@ -38,15 +39,15 @@ const Heroes = (props) => {
                                   remove={() => remove(hero.id, hero)   }/>)
                 })}
             </div>
-            <div className='heroes'>
-                <span>Pull:</span>
-                {user.heroesPull.map((hero, index) => {
-                    return (<Hero hero={hero}
-                                  key={hero.id}
-                                  index={index}
-                                  addToCamp={() => addToCamp(hero.id, hero)}/>)
-                })}
-            </div>
+            {/*<div className='heroes'>*/}
+            {/*    <span>Pull:</span>*/}
+            {/*    {user.heroesPull.map((hero, index) => {*/}
+            {/*        return (<Hero hero={hero}*/}
+            {/*                      key={hero.id}*/}
+            {/*                      index={index}*/}
+            {/*                      addToCamp={() => addToCamp(hero.id, hero)}/>)*/}
+            {/*    })}*/}
+            {/*</div>*/}
         </div>)
 };
 

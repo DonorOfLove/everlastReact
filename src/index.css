@@ -44,7 +44,7 @@ a {
     position: fixed; /*Отсоединяем контейнер от страницы и фиксируем в окне браузера*/
     width: 100%; /*Ширина на все окно браузера*/
     height: 100%; /*Высота на все окно браузера*/
-    background-color: #cb9ea4;
+    background-color: #8c5ebb;
     display: flex; /*Превращаем контейнер в flexBox*/
     flex-direction: column; /*Расставляем дочерние элементы по вертикали*/
 }
@@ -90,7 +90,7 @@ a {
 .footer {
     display: flex;
     height: 7vw;
-    background-color: #5f9799;
+    background-color: #8c5ebb;
     justify-content: space-around;
     flex-grow: 0; /*Запрещаем увеличиваться*/
     flex-shrink: 0; /*Запрещаем сжиматься*/
@@ -101,7 +101,7 @@ a {
 
 .footer a {
     color: #e3e3e3;
-    border: 3px solid #614382;
+    border: 3px solid #5b377d;
     width: 34%;
     text-align: center;
 
@@ -165,11 +165,12 @@ a {
 .stats {
     display: none;
     position: absolute;
-    margin-top: 160px;
-    background-color: #afafaf;
-    opacity: 90%;
-    border: 3px solid #717070;
-
+    margin-top: 13vw;
+    background-color: rgb(138, 90, 189,50%);
+    border: 0.4vw solid #451672;
+}
+.additionalStats{
+    color: #148b14;
 }
 
 
