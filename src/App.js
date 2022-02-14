@@ -27,9 +27,11 @@ function App() {
             atck: warriorAtck,
             idle: warriorIdle,
             animationSpeed: 1300,
-            items:{helmet: {name: 'shapka', type: 'iron', hp: 1, defence: 1},
-                armor: '',
-                weapon: ''}
+            items: [
+                {helmet: {name: 'shapka', type: 'iron', hp: 1, defence: 1}},
+                {armor: {}},
+                {weapon: {}}
+            ]
 
         },
         {
@@ -46,11 +48,9 @@ function App() {
             idle: witchIdle,
             atck: whichAtck,
             animationSpeed: 900,
-            items: {
-                helmet: {name: 'shapka', type: 'iron', hp: 1, defence: 1},
-                armor: '',
-                weapon: {},
-            }
+            items: [{helmet: {name: 'shapka', type: 'iron', hp: 1, defence: 1}},
+                {armor: {name:'sd',defence:2,hp:2}},
+                {weapon: {}}]
 
         },
     ])
@@ -58,7 +58,7 @@ function App() {
     let [user, setUser] = React.useState({
         immortalLastVisit: new Date(2022, 1, 8, 4, 0, 0, 0),
         bgLoad: false,
-        gold: 1,
+        gold: 99,
         lvl: 1,
         campaignLvl: 4,
         name: 'stAss',
@@ -66,7 +66,7 @@ function App() {
         modalText: 'something went wrong :,(',
         heroesPull: [
             {
-                role: 'tank', name: 'Grog', hp: 2, damage: 1, atkSpeed: 3000, defence: 10, lvl: 1, id: Math.random(),
+                role: 'tank', name: 'Grog', hp: 2, damage: 1, atkSpeed: 3000, defence: 10, lvl: 1, id: Math.random(),items:[]
             },
             {
                 role: 'heal',
@@ -77,7 +77,8 @@ function App() {
                 defence: 10,
                 lvl: 1,
                 id: Math.random(),
-                key: Math.random()
+                key: Math.random(),
+                items:[]
             },
             {
                 role: 'dd',
@@ -88,7 +89,8 @@ function App() {
                 defence: 2,
                 lvl: 1,
                 id: Math.random(),
-                key: Math.random()
+                key: Math.random(),
+                items:[]
             },
             {
                 role: 'heal',
@@ -99,9 +101,13 @@ function App() {
                 defence: 10,
                 lvl: 1,
                 id: Math.random(),
-                key: Math.random()
+                key: Math.random(),
+                items:[]
             }],
-        itemsStore: [],
+        itemsStore: [{helmet: {name: 'shapka', type: 'iron', hp: 1, defence: 1}},
+        {armor: {name:'sd',defence:2,hp:2}},
+            {helmet: {name:'shapka',type:'iron',hp:2}},
+        {weapon: {name:'sulfuras',damage:2}}],
     })
 
     return (
@@ -118,5 +124,5 @@ function App() {
 }
 
 
-export default App;
+    export default App;
 

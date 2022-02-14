@@ -18,11 +18,9 @@ const Heroes = (props) => {
             }
     }
 
-
     const remove = (id, hero) => {
         const newUserHeroes=user.heroesPull.concat(hero)
         setUser( {...user,heroesPull:newUserHeroes})
-
         const newHeroes = heroes.filter((hero) => hero.id !== id);
         setHeroes(newHeroes);
     }
@@ -39,15 +37,15 @@ const Heroes = (props) => {
                                   remove={() => remove(hero.id, hero)   }/>)
                 })}
             </div>
-            {/*<div className='heroes'>*/}
-            {/*    <span>Pull:</span>*/}
-            {/*    {user.heroesPull.map((hero, index) => {*/}
-            {/*        return (<Hero hero={hero}*/}
-            {/*                      key={hero.id}*/}
-            {/*                      index={index}*/}
-            {/*                      addToCamp={() => addToCamp(hero.id, hero)}/>)*/}
-            {/*    })}*/}
-            {/*</div>*/}
+            <div className='heroes'>
+                <span>Pull:</span>
+                {user.heroesPull.map((hero, index) => {
+                    return (<Hero hero={hero}
+                                  key={hero.id}
+                                  index={index}
+                                  addToCamp={() => addToCamp(hero.id, hero)}/>)
+                })}
+            </div>
         </div>)
 };
 
