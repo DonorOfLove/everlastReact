@@ -1,34 +1,49 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import map from "../../Components/Footer/Map";
+import Context from "../../context";
 
 const Item = (props) => {
-
+    const context = useContext(Context)
+    const [user, setUser] = [context.user, context.setUser]
+    const [heroes,setHeroes]=[context.heroes,context.setHeroes]
+    let hero = props.hero
     const items = props.stats
 
-    const objectMap = (obj, fn) =>
-        Object.fromEntries(
-            Object.entries(obj).map(
-                ([k, v], i) => [k, fn(v, k, i)]
-            )
-        )
-        const mapfn=()=>{
-            console.log('s')}
-    console.log(objectMap(items,mapfn))
+    function enterEvent(event) {
+        event.currentTarget.lastChild.style.display = 'block'
+    }
+
+    function leaveEvent(event) {
+        event.currentTarget.lastChild.style.display = 'none'
+    }
+
+    function itemTakeOn() {
+        console.log(items)
+
+//         setHeroes({...heroes, hero: {items}:items})
+
+    }
+
+//ПЕРЕДАЮТСЯ ВСЕ ШМОТКИ, А НЕ ОДНА
+
     function showStats() {
         for (let item in items) {
-            for (let stat in items[item]) {
-                console.log(stat)
-                console.log(Object.fromEntries(item))
-                  //  return <li>{stat + ':' + items[item][stat]}</li>
-            }
-
-
+            return (Object.entries(items[item]).map((items) => {
+                    return <li key={Math.random()}>{items[0] + ':' + items[1]}</li>
+                })
+            )
         }
     }
 
+
     return (
-        <div>
-            <ul></ul>
+        <div className='item'
+            onMouseEnter={enterEvent}
+             onMouseLeave={leaveEvent}
+             onClick={itemTakeOn}
+            >
+            {Object.keys(items)[0]}
+            <ul className='item__stats'>{showStats()}</ul>
         </div>
     );
 };

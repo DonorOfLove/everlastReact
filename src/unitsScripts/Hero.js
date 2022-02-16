@@ -17,7 +17,6 @@ const Hero = ({hero, addToCamp, remove}) => {
             for (let key in item) {
                 if (item[key].hasOwnProperty(stat)) {
                     adittionalStat += item[key][stat]
-//5 литография
                 }
             }
         }
@@ -48,7 +47,7 @@ const Hero = ({hero, addToCamp, remove}) => {
                     <li>atkSpd:{hero.atkSpeed}+<span
                         className='additionalStats'>{getAdditionalStats(hero, 'atkSpeed')}</span></li>
                 </ul>
-                <Items/>
+                <Items hero={hero}/>
             </div>
         </div>
     );

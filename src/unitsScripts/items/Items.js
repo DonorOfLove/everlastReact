@@ -3,7 +3,7 @@ import Context from "../../context";
 
 import Item from "./Item";
 
-const Items = () => {
+const Items = (props) => {
     const context = React.useContext(Context)
     const [user, setUser] = [context.user, context.setUser]
 
@@ -13,12 +13,10 @@ const Items = () => {
             ...user, modalVision: true,
             modalText: filteredItems.map((item) => {
                 return (<Item key={Math.random()}
-                              stats={item}/>)
-
+                              stats={item}
+                              hero={props.hero}/>)
             })
         })
-
-
     }
 
 
@@ -27,7 +25,7 @@ const Items = () => {
             <div onClick={(e) => {
                 e.stopPropagation()
                 openModal('helmet')
-            }}>helm
+            }}>+
             </div>
             <div>arm</div>
             <div>weap</div>

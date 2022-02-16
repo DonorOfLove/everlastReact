@@ -34,25 +34,25 @@ function App() {
             ]
 
         },
-        {
-            role: 'dd',
-            name: 'Angry',
-            hp: 5,
-            damage: 3,
-            atkSpeed: 3000,
-            defence: 2,
-            lvl: 1,
-            id: Math.random(),
-            key: Math.random(),
-            animation: witchIdle,
-            idle: witchIdle,
-            atck: whichAtck,
-            animationSpeed: 900,
-            items: [{helmet: {name: 'shapka', type: 'iron', hp: 1, defence: 1}},
-                {armor: {name:'sd',defence:2,hp:2}},
-                {weapon: {}}]
-
-        },
+        // {
+        //     role: 'dd',
+        //     name: 'Angry',
+        //     hp: 5,
+        //     damage: 3,
+        //     atkSpeed: 3000,
+        //     defence: 2,
+        //     lvl: 1,
+        //     id: Math.random(),
+        //     key: Math.random(),
+        //     animation: witchIdle,
+        //     idle: witchIdle,
+        //     atck: whichAtck,
+        //     animationSpeed: 900,
+        //     items: [{helmet: {name: 'shapka', type: 'iron', hp: 1, defence: 1}},
+        //         {armor: {name: 'sd', defence: 2, hp: 2}},
+        //         {weapon: {}}]
+        //
+        // },
     ])
 
     let [user, setUser] = React.useState({
@@ -66,7 +66,15 @@ function App() {
         modalText: 'something went wrong :,(',
         heroesPull: [
             {
-                role: 'tank', name: 'Grog', hp: 2, damage: 1, atkSpeed: 3000, defence: 10, lvl: 1, id: Math.random(),items:[]
+                role: 'tank',
+                name: 'Grog',
+                hp: 2,
+                damage: 1,
+                atkSpeed: 3000,
+                defence: 10,
+                lvl: 1,
+                id: Math.random(),
+                items: []
             },
             {
                 role: 'heal',
@@ -78,7 +86,7 @@ function App() {
                 lvl: 1,
                 id: Math.random(),
                 key: Math.random(),
-                items:[]
+                items: []
             },
             {
                 role: 'dd',
@@ -90,7 +98,7 @@ function App() {
                 lvl: 1,
                 id: Math.random(),
                 key: Math.random(),
-                items:[]
+                items: []
             },
             {
                 role: 'heal',
@@ -102,16 +110,19 @@ function App() {
                 lvl: 1,
                 id: Math.random(),
                 key: Math.random(),
-                items:[]
+                items: []
             }],
-        itemsStore: [{helmet: {name: 'shapka', type: 'iron', hp: 1, defence: 1}},
-        {armor: {name:'sd',defence:2,hp:2}},
-            {helmet: {name:'shapka',type:'iron',hp:2}},
-        {weapon: {name:'sulfuras',damage:2}}],
+        itemsStore: [
+            {helmet: {name: 'shapka', type: 'iron', hp: 1, defence: 1}},
+            {armor: {name: 'sd', defence: 2, hp: 2}},
+            {helmet: {name: 'shapka', type: 'iron', hp: 2}},
+            {weapon: {name: 'sulfuras', damage: 2,}},
+        ],
+
     })
 
     return (
-        <Context.Provider value={{user, setUser}}>
+        <Context.Provider value={{user, setUser,heroes,setHeroes}}>
             {(user.modalVision) ? <Modal setUser={setUser} user={user}/> : null}
             <Routes>
                 <Route path='*' element={MainMenu({heroes, setHeroes, user, setUser})}/>
@@ -124,5 +135,5 @@ function App() {
 }
 
 
-    export default App;
+export default App;
 
