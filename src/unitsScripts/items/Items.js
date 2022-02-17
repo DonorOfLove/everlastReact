@@ -22,6 +22,7 @@ const Items = (props) => {
 
     return (
         <div>
+
             <div onClick={(e) => {
                 e.stopPropagation()
                 openModal('helmet')

@@ -6,7 +6,7 @@ const Item = (props) => {
     const context = useContext(Context)
     const [user, setUser] = [context.user, context.setUser]
     const [heroes,setHeroes]=[context.heroes,context.setHeroes]
-    let hero = props.hero
+
     const items = props.stats
 
     function enterEvent(event) {
@@ -18,13 +18,13 @@ const Item = (props) => {
     }
 
     function itemTakeOn() {
-        console.log(items)
+        let hero = props.hero
+        hero.items=[items]
 
-//         setHeroes({...heroes, hero: {items}:items})
-
+        setHeroes([...heroes],{hero})
+        console.log(heroes)
+        setUser({...user},[...itemsStore.concat(items)])
     }
-
-//ПЕРЕДАЮТСЯ ВСЕ ШМОТКИ, А НЕ ОДНА
 
     function showStats() {
         for (let item in items) {

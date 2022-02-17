@@ -61,7 +61,7 @@ function App() {
         gold: 99,
         lvl: 1,
         campaignLvl: 4,
-        name: 'stAss',
+        name: 'userName',
         modalVision: false,
         modalText: 'something went wrong :,(',
         heroesPull: [
