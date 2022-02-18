@@ -23,14 +23,6 @@ const Hero = ({hero, addToCamp, remove}) => {
         return adittionalStat
     }
 
-    function takeOffItem() {
-
-    }
-
-    function takeOnItem() {
-
-    }
-
     return (
         <div className={['hero' + ' ' + hero.role]}
              onMouseEnter={enterEvent}

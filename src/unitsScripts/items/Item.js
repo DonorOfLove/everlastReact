@@ -1,13 +1,12 @@
 import React, {useContext} from 'react';
 import map from "../../Components/Footer/Map";
 import Context from "../../context";
+import Modal from "../../Components/Modal";
 
-const Item = (props) => {
+const Item = ({item, itemTakeOn, itemTakeOff}) => {
     const context = useContext(Context)
     const [user, setUser] = [context.user, context.setUser]
-    const [heroes,setHeroes]=[context.heroes,context.setHeroes]
-
-    const items = props.stats
+    const [heroes, setHeroes] = [context.heroes, context.setHeroes]
 
     function enterEvent(event) {
         event.currentTarget.lastChild.style.display = 'block'
@@ -17,19 +16,10 @@ const Item = (props) => {
         event.currentTarget.lastChild.style.display = 'none'
     }
 
-    function itemTakeOn() {
-        let hero = props.hero
-        hero.items=[items]
-
-        setHeroes([...heroes],{hero})
-        console.log(heroes)
-        setUser({...user},[...itemsStore.concat(items)])
-    }
-
     function showStats() {
-        for (let item in items) {
-            return (Object.entries(items[item]).map((items) => {
-                    return <li key={Math.random()}>{items[0] + ':' + items[1]}</li>
+        for (let stat in item) {
+            return (Object.entries(item[stat]).map((item) => {
+                    return <li key={Math.random()}>{item[0] + ':' + item[1]}</li>
                 })
             )
         }
@@ -38,11 +28,10 @@ const Item = (props) => {
 
     return (
         <div className='item'
-            onMouseEnter={enterEvent}
+             onMouseEnter={enterEvent}
              onMouseLeave={leaveEvent}
-             onClick={itemTakeOn}
-            >
-            {Object.keys(items)[0]}
+             onClick={itemTakeOn || itemTakeOff}>
+             {Object.keys(item)[0]}
             <ul className='item__stats'>{showStats()}</ul>
         </div>
     );

@@ -74,7 +74,11 @@ function App() {
                 defence: 10,
                 lvl: 1,
                 id: Math.random(),
-                items: []
+                items: [
+                    {helmet: {}},
+                    {armor: {}},
+                    {weapon: {}}
+                ]
             },
             {
                 role: 'heal',
@@ -86,7 +90,11 @@ function App() {
                 lvl: 1,
                 id: Math.random(),
                 key: Math.random(),
-                items: []
+                items: [
+                    {helmet: {}},
+                    {armor: {}},
+                    {weapon: {}}
+                ]
             },
             {
                 role: 'dd',
@@ -98,7 +106,11 @@ function App() {
                 lvl: 1,
                 id: Math.random(),
                 key: Math.random(),
-                items: []
+                items: [
+                    {helmet: {}},
+                    {armor: {}},
+                    {weapon: {}}
+                ]
             },
             {
                 role: 'heal',
@@ -110,7 +122,11 @@ function App() {
                 lvl: 1,
                 id: Math.random(),
                 key: Math.random(),
-                items: []
+                items: [
+                    {helmet: {}},
+                    {armor: {}},
+                    {weapon: {}}
+                ]
             }],
         itemsStore: [
             {helmet: {name: 'shapka', type: 'iron', hp: 1, defence: 1}},
