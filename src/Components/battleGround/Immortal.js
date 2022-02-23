@@ -3,6 +3,7 @@ import BattleHero from "../../unitsScripts/BattleHero";
 import Context from "../../context";
 
 const Immortal = (props) => {
+
     let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(props.state.heroes)))
     const heroAtckAnimation = props.heroAtckAnimaton
     const heroIdleAnimation = props.heroIdleAnimation
@@ -16,31 +17,30 @@ const Immortal = (props) => {
             clearInterval(timer)
         }
     }
-    React.useEffect(() => {
-            if (!user.bgLoad) {
-                window.location.href = "http://localhost:3000/map"
-            }
-            for (let hero of heroes) {
-                const timer = setInterval(() => {
-                    checkNoBack(timer)
-                    heroAtckAnimation(hero)
-                    setCounter(counter += hero.damage)
-                    if (heroes.length == 0) {
-                        clearInterval(timer)
-                    }
-                    setTimeout(() => heroIdleAnimation(hero), hero.animationSpeed)
-                }, hero.atkSpeed)
-            }
-            setImmortal({...immortal, atckCounter: 1})
+
+    useEffect(() => {
+        if (!props.bgLoad) {
+            window.location.href = "http://localhost:3000/map"
         }
-        , [])
+        for (let hero of heroes) {
+            props.addStats(hero)
+            const timer = setInterval(() => {
+                checkNoBack(timer)
+                heroAtckAnimation(hero)
+                setCounter(counter += hero.damage)
+                if (heroes.length == 0) {
+                    clearInterval(timer)
+                }
+                setTimeout(() => heroIdleAnimation(hero), hero.animationSpeed)
+            }, hero.atkSpeed)
+        }
+        setImmortal({...immortal, atckCounter: 1})
+    }, [])
 
-    React.useEffect(() => {
-
+    useEffect(() => {
         const timer = setTimeout(() => {
             if (window.location.href !== 'http://localhost:3000/BattleGround/Immortal') {
                 clearInterval(timer)
-
             }
             try {
                 const randomInt = Math.floor(Math.random() * heroes.length)
@@ -51,7 +51,6 @@ const Immortal = (props) => {
                 setHeroes([...heroes = heroes.filter(thisTarget => thisTarget.hp > 0)])
                 setImmortal({...immortal, atckCounter: immortal.atckCounter + 1, damage: counter * 0.03})
             } catch (e) {
-
                 clearInterval(timer)
             }
         }, immortal.atckSpeed)

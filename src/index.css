@@ -169,6 +169,7 @@ a {
     background-color: rgb(138, 90, 189,50%);
     border: 0.4vw solid #451672;
 }
+
 .item__stats{
     display: none;
     position: absolute;

@@ -17,12 +17,9 @@ const Item = ({item, itemTakeOn, itemTakeOff}) => {
     }
 
     function showStats() {
-        for (let stat in item) {
-            return (Object.entries(item[stat]).map((item) => {
-                    return <li key={Math.random()}>{item[0] + ':' + item[1]}</li>
-                })
-            )
-        }
+        return Object.entries(item).map((stat) => {
+            return <li>{stat[0]}: {stat[1]}</li>
+        })
     }
 
 
@@ -31,7 +28,7 @@ const Item = ({item, itemTakeOn, itemTakeOff}) => {
              onMouseEnter={enterEvent}
              onMouseLeave={leaveEvent}
              onClick={itemTakeOn || itemTakeOff}>
-             {Object.keys(item)[0]}
+            {item.name}
             <ul className='item__stats'>{showStats()}</ul>
         </div>
     );

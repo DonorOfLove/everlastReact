@@ -10,14 +10,22 @@ const Hero = ({hero, addToCamp, remove}) => {
     function leaveEvent(event) {
         event.currentTarget.lastChild.style.display = 'none'
     }
-
+// React.useEffect(()=>{
+//
+//     for (let item of Object.entries(hero.items)) {
+//         for (let stat in item[1]) {
+//             console.log(item[1])
+//             if (hero.hasOwnProperty(stat)&&stat!=='name') {
+//                 hero[stat]=hero[stat]+item[1][stat]
+//             }
+//         }
+// }
+// },[])
     function getAdditionalStats(hero, stat) {
         let adittionalStat = 0
-        for (let item of hero.items) {
-            for (let key in item) {
-                if (item[key].hasOwnProperty(stat)) {
-                    adittionalStat += item[key][stat]
-                }
+        for (let item in hero.items) {
+            if (hero.items[item].hasOwnProperty(stat)) {
+                adittionalStat += hero.items[item][stat]
             }
         }
         return adittionalStat
@@ -27,7 +35,9 @@ const Hero = ({hero, addToCamp, remove}) => {
         <div className={['hero' + ' ' + hero.role]}
              onMouseEnter={enterEvent}
              onMouseLeave={leaveEvent}
-             onClick={addToCamp || remove}>
+             onClick={addToCamp || remove}
+         >
+
             <p>{hero.name + '\n' + hero.lvl} </p>
             <div className='stats' id='stats'>
                 <ul className='stats__ul'>

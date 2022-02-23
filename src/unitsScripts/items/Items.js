@@ -10,9 +10,8 @@ const Items = (props) => {
     const [heroes, setHeroes] = [context.heroes, context.setHeroes]
     let hero = props.hero
 
-
     function isEmpty(obj) {
-        for (let key in Object.entries(obj)[0][1]) {
+        for (let key in obj) {
             return true
         }
         return false
@@ -24,7 +23,7 @@ const Items = (props) => {
             ...user, modalVision: true,
             modalText: filteredItems.map((item) => {
                 return (<Item key={Math.random()}
-                              item={item}
+                              item={Object.entries(item)[0][1]}
                               hero={hero}
                               itemTakeOn={() => itemTakeOn(item, hero)}
                 />)
@@ -33,34 +32,34 @@ const Items = (props) => {
     }
 
     function itemTakeOff(item, hero) {
-        console.log(Object.keys(item)[0])
-        console.log(hero.items)
-        console.log(Object.keys(hero.items))
+        let type = item[0]
+        hero.items[type]={}
+        let newItem= new Object()
+        newItem[type]=item[1]
+        setUser({...user,itemsStore:user.itemsStore.push(newItem)})
+        setHeroes([...heroes],hero)
     }
 
     function itemTakeOn(item, hero) {
-        hero.items = [item]
-        // ИСПРАВИТЬ, ^^^^^^ потому что все шмотки меняются на выбранную
+        let type = Object.keys(item)[0]
+        hero.items[type] = Object.values(item)[0]
         setHeroes([...heroes], {hero})
-        let newItems = user.itemsStore.filter(arg => arg !== item)
-        setUser({...user, itemsStore: newItems, modalVision: false})
-        console.log('s')
+        setUser({...user, itemsStore: user.itemsStore.filter(arg => arg !== item), modalVision: false})
     }
 
     return (
         <div>
-            {hero.items.map((item) => {
-                return <div
-                    onClick={(e) => {
+            {Object.entries(hero.items).map((item) => {
+                return (
+                    <div onClick={(e) => {
                         e.stopPropagation()
-                        openModal(Object.keys(item))
-                    }}>
-                    {isEmpty(item) ? <Item key={Math.random()}
-                                           item={item}
-                                           hero={hero}
-                                           itemTakeOff={() => itemTakeOff(item, hero)}/> :
-                        <div>+</div>}
-                </div>
+                        openModal(item[0])}}>
+                        {isEmpty(item[1]) ? <Item key={Math.random()}
+                                                  item={item[1]}
+                                                  hero={hero}
+                                                  itemTakeOff={() => itemTakeOff(item, hero)}/> :
+                            <div>+</div>}
+                    </div>)
             })}
         </div>
     );

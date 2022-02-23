@@ -10,7 +10,8 @@ const Map = (props) => {
     const heroes = props.state.heroes
     const user = props.state.user
     const setUser = props.state.setUser
-    const dataCheck=(Date.now()-user.immortalLastVisit)/1000/60/60
+    const dataCheck=(Date.now()-new Date(user.immortalLastVisit))/1000/60/60
+
 
     const styles = {
         justifyContent: 'center',

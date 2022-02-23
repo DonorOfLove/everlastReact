@@ -3,6 +3,7 @@ import BattleHero from "../../unitsScripts/BattleHero";
 import Enemy from "../../unitsScripts/Enemy";
 
 const CampaignBG = (props) => {
+
     const user = props.user
     const setUser = props.setUser
     const winCheck = React.useRef()
@@ -13,7 +14,7 @@ const CampaignBG = (props) => {
         if (user.campaignLvl % 5 == 0) {
             return [{hp: 20, damage: 1, atkSpeed: 3000, defence: 10, key: Math.random()}]
         } else {
-            return [{hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
+            return [{hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random()},
             ]
         }
     })
@@ -25,11 +26,12 @@ const CampaignBG = (props) => {
         }
     }
 
-    useEffect(function func() {
-        if (!user.bgLoad) {
+    useEffect(() => {
+        if (!props.bgLoad) {
             window.location.href = "http://localhost:3000/map"
         }
         for (let hero of heroes) {
+            props.addStats(hero)
             const timer = setInterval(() => {
                 checkNoBack(timer)
                 heroAtckAnimation(hero)
@@ -41,12 +43,10 @@ const CampaignBG = (props) => {
                         newEnemy.hp = enemyWithNewHP
                         setEnemies([...enemies], {newEnemy})
                         setEnemies(enemies = enemies.filter(thisTarget => thisTarget.hp > 0))
+                        console.log(enemies)
                     } catch (e) {
-                      heroIdleAnimation(hero)
                         winCheck.current = true
-                        clearInterval(timer)
-                    }
-                    if (heroes.length == 0 || enemies.length == 0 || window.location.href !== 'http://localhost:3000/BattleGround/CampaignBG') {
+                        heroIdleAnimation(hero)
                         clearInterval(timer)
                     }
                     setTimeout(() => heroIdleAnimation(hero), hero.animationSpeed)
@@ -55,7 +55,7 @@ const CampaignBG = (props) => {
         }
     }, [])
 
-    useEffect(function func() {
+    useEffect(() => {
         for (let enemy of enemies) {
             const timer = setInterval(() => {
                 checkNoBack(timer)
@@ -75,7 +75,8 @@ const CampaignBG = (props) => {
             }, enemy.atkSpeed)
         }
     }, [])
-    React.useEffect(() => {
+
+    useEffect(() => {
         if (winCheck.current === true) {
             window.history.back(-1)
             setUser({
@@ -110,7 +111,7 @@ const CampaignBG = (props) => {
                 })}
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default CampaignBG;
