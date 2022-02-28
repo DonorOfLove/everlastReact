@@ -1,8 +1,10 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom'
-import CampaignBG from "./CampaignBG";
-import EverlastTower from "./EverlastTower";
-import Immortal from "./Immortal";
+import CampaignBG from "./gameModes/CampaignBG";
+import EverlastTower from "./gameModes/EverlastTower";
+import Immortal from "./gameModes/Immortal";
+import batIdle from "./assets/animations/bat_Idle.gif"
+import batAtck from "assert/animations"
 
 const BattleGround = (props) => {
 
@@ -13,6 +15,14 @@ const BattleGround = (props) => {
 
     React.useEffect(()=>{setBgLoad(true)},[])
 
+    function randomEnemyAnimation(){
+
+       let animations= [[batIdle,batAtck]]
+        let randomInt=Math.random()*animations
+        console.log(randomInt)
+    }
+
+    randomEnemyAnimation()
     function heroAtckAnimation(hero) {
         setHeroes([...heroes], hero.animation = hero.atck)
     }

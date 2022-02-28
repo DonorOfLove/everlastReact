@@ -2,15 +2,15 @@ import React from 'react';
 import Hero from "../../unitsScripts/Hero";
 
 const Heroes = (props) => {
+
     let user = props.state.user
     let setUser = props.state.setUser
     let heroes = props.state.heroes
     let setHeroes = props.state.setHeroes
 
-
     const addToCamp = (id, hero) => {
         if (heroes.length === 3) {
-            setUser({...user,modalVision:true,modalText:'Ugg,it\'\s a bit crowded in here'})
+            setUser({...user,modalVision:true,modalText:"Ugg,it's a bit crowded in here"})
         } else {
             setHeroes(heroes.concat(hero))
             const newHeroes = user.heroesPull.filter((hero) => hero.id !== id);
@@ -24,7 +24,6 @@ const Heroes = (props) => {
         const newHeroes = heroes.filter((hero) => hero.id !== id);
         setHeroes(newHeroes);
     }
-
 
     return (
         <div>

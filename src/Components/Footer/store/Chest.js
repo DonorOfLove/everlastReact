@@ -14,30 +14,39 @@ const Chest = (props) => {
         const randomInt = Math.floor(Math.random() * Object.keys(gameAvailability).length)
         const type = Object.entries(gameAvailability)[randomInt][0]
         const entToTake = Math.floor(Math.random() * gameAvailability[type].length)
-        if (gameAvailability[type][entToTake]==undefined){
-            console.log('s')
-            open()
-        }else {
-            switch (type) {
-                case 'heroes':
-                    setUser({...user, heroesPull: user.heroesPull.concat(gameAvailability[type][entToTake])})
-                    break;
-                case 'items':
-                    setUser({...user, itemsStore: user.itemsStore.concat(gameAvailability[type][entToTake])})
-                    break;
-            }
-            gameAvailability[type] = gameAvailability[type].filter(arg => arg !== gameAvailability[type][entToTake])
-            console.log(entToTake)
-            setGameAvailability({...gameAvailability})
-            let prevEnt = user.gold
-            // setUser({...user, gold: prevEnt - 100})
-            showDrop(gameAvailability[type][entToTake])
+        const drop = gameAvailability[type][entToTake]
+
+        switch (type) {
+            case 'heroes':
+                setUser({
+                    ...user, heroesPull: user.heroesPull.concat(drop),
+                    modalVision: true,
+                    modalText: `You got new hero ${drop.name}, check your heroes`,
+                    gold:user.gold-100
+                })
+                break;
+            case 'items':
+
+                setUser({
+                    ...user, itemsStore: user.itemsStore.concat(drop),
+                    modalVision: true,
+                    gold:user.gold-100,
+                    modalText: `You got new item ${Object.entries(drop)[0][1].name}, check your inventory`
+                })
+                break;
         }
 
+        gameAvailability[type] = gameAvailability[type].filter(arg => arg !== gameAvailability[type][entToTake])
+        if (gameAvailability[type].length == 0) {
+            delete gameAvailability[type]
+
+        }
+
+        setGameAvailability({...gameAvailability})
+
+
     }
-    function showDrop(drop) {
-        console.log(drop)
-    }
+
 
     return (
         <div className='chest' onClick={open}>

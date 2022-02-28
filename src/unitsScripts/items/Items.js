@@ -5,6 +5,7 @@ import Item from "./Item";
 
 
 const Items = (props) => {
+
     const context = React.useContext(Context)
     const [user, setUser] = [context.user, context.setUser]
     const [heroes, setHeroes] = [context.heroes, context.setHeroes]
@@ -58,7 +59,7 @@ const Items = (props) => {
                                                   item={item[1]}
                                                   hero={hero}
                                                   itemTakeOff={() => itemTakeOff(item, hero)}/> :
-                            <div>+</div>}
+                            <div className='item'>+</div>}
                     </div>)
             })}
         </div>

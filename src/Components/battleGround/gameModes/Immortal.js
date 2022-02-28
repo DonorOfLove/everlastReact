@@ -1,6 +1,6 @@
 import React, {useEffect, useContext} from 'react';
-import BattleHero from "../../unitsScripts/BattleHero";
-import Context from "../../context";
+import BattleHero from "../../../unitsScripts/BattleHero";
+import Context from "../../../context";
 
 const Immortal = (props) => {
 

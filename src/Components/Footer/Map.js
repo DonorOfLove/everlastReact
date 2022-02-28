@@ -1,26 +1,22 @@
 import React, {useEffect} from 'react';
 import Hero from "../../unitsScripts/Hero";
 import {Link} from 'react-router-dom'
-import Modal from "../Modal";
-
-
-
 
 const Map = (props) => {
+
     const heroes = props.state.heroes
     const user = props.state.user
     const setUser = props.state.setUser
     const dataCheck=(Date.now()-new Date(user.immortalLastVisit))/1000/60/60
 
-
     const styles = {
         justifyContent: 'center',
         padding: '40px'
     }
+
     useEffect(() => {
         setUser({...user, bgLoad: true})
     }, [])
-
 
     function battlePower() {
         let bp = 0
@@ -32,7 +28,6 @@ const Map = (props) => {
 
     return (
         <div className='map'>
-
             <span>battle power: {battlePower()}</span>
             <div className='heroes' style={styles}>
                 {heroes.map((hero, index) => {
@@ -42,12 +37,11 @@ const Map = (props) => {
                     />)
                 })}
             </div>
-            <div className='level__option'>
+            {heroes.length>0?(  <div className='level__option'>
                 <Link to='/BattleGround/EverlastTower'>Everlast Tower</Link>
                 <Link to='/BattleGround/CampaignBG'>level: {user.campaignLvl}</Link>
                 {dataCheck>24?(<Link to='/BattleGround/Immortal'>Immortal</Link>):(`come back in ${Math.round(24-dataCheck)} hours`)}
-
-            </div>
+            </div>):(<div>You need at least 1 hero on your camp to start</div>)}
         </div>
     );
 };

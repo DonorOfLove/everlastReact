@@ -4,8 +4,6 @@ import Map from "../Footer/Map";
 import Store from "../Footer/store/Store";
 import {Routes, Route} from 'react-router-dom'
 
-
-
 const Main = (props) => {
     return (
         <div className='main'>

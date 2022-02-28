@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import map from "../../Components/Footer/Map";
 import Context from "../../context";
-import Modal from "../../Components/Modal";
+
 
 const Item = ({item, itemTakeOn, itemTakeOff}) => {
+
     const context = useContext(Context)
     const [user, setUser] = [context.user, context.setUser]
     const [heroes, setHeroes] = [context.heroes, context.setHeroes]
@@ -21,7 +21,6 @@ const Item = ({item, itemTakeOn, itemTakeOff}) => {
             return <li>{stat[0]}: {stat[1]}</li>
         })
     }
-
 
     return (
         <div className='item'

@@ -1,37 +1,30 @@
-import React, {useEffect} from 'react';
-import BattleHero from "../../unitsScripts/BattleHero";
-import Enemy from "../../unitsScripts/Enemy";
+import React, {useEffect, useContext} from 'react';
+import BattleHero from "../../../unitsScripts/BattleHero";
+import Enemy from "../../../unitsScripts/Enemy";
+import Context from "../../../context";
 
-const CampaignBG = (props) => {
+const EverlastTower = (props) => {
 
-    const user = props.user
-    const setUser = props.setUser
-    const winCheck = React.useRef()
+    const context = useContext(Context)
+    const [user, setUser] = [context.user, context.setUser]
+    let [enemies, setEnemies] = React.useState([
+        {hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random()}])
+    let [stage, setStage] = React.useState(0)
+    let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(props.state.heroes)))
     const heroAtckAnimation = props.heroAtckAnimaton
     const heroIdleAnimation = props.heroIdleAnimation
 
-    let [enemies, setEnemies] = React.useState(() => {
-        if (user.campaignLvl % 5 == 0) {
-            return [{hp: 20, damage: 1, atkSpeed: 3000, defence: 10, key: Math.random()}]
-        } else {
-            return [{hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random()},
-            ]
-        }
-    })
-    let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(props.state.heroes)))
-
     function checkNoBack(timer) {
-        if (window.location.href !== 'http://localhost:3000/BattleGround/CampaignBG') {
+        if (window.location.href !== 'http://localhost:3000/BattleGround/EverlastTower') {
             clearInterval(timer)
         }
     }
 
-    useEffect(() => {
+    function heroesAtck() {
         if (!props.bgLoad) {
             window.location.href = "http://localhost:3000/map"
         }
         for (let hero of heroes) {
-            props.addStats(hero)
             const timer = setInterval(() => {
                 checkNoBack(timer)
                 heroAtckAnimation(hero)
@@ -43,19 +36,18 @@ const CampaignBG = (props) => {
                         newEnemy.hp = enemyWithNewHP
                         setEnemies([...enemies], {newEnemy})
                         setEnemies(enemies = enemies.filter(thisTarget => thisTarget.hp > 0))
-                        console.log(enemies)
                     } catch (e) {
-                        winCheck.current = true
-                        heroIdleAnimation(hero)
                         clearInterval(timer)
+                        setStage(stage + 1)
+                        heroIdleAnimation(hero)
                     }
                     setTimeout(() => heroIdleAnimation(hero), hero.animationSpeed)
                 }
             }, hero.atkSpeed)
         }
-    }, [])
+    }
 
-    useEffect(() => {
+    function enemyAtck() {
         for (let enemy of enemies) {
             const timer = setInterval(() => {
                 checkNoBack(timer)
@@ -68,50 +60,65 @@ const CampaignBG = (props) => {
                         setHeroes([...heroes], {newHero})
                         setHeroes(heroes = heroes.filter(thisTarget => thisTarget.hp > 0))
                     } catch (e) {
-                        winCheck.current = false
                         clearInterval(timer)
                     }
                 }
             }, enemy.atkSpeed)
         }
+    }
+
+    useEffect(() => {
+        for (let hero of heroes) {
+            props.addStats(hero)
+        }
+        enemyAtck()
     }, [])
 
     useEffect(() => {
-        if (winCheck.current === true) {
-            window.history.back(-1)
+        heroesAtck()
+    }, [stage])
+
+    useEffect(() => {
+        if (enemies.length == 0) {
+            setEnemies(enemies = [
+                {hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random()},
+                {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
+            ])
+            enemyAtck()
+        }
+    }, [enemies])
+
+    useEffect(() => {
+        if (heroes.length == 0) {
+            console.log('s')
             setUser({
                 ...user,
-                modalText: 'iziPizi sosite mobi',
                 modalVision: true,
-                gold: user.campaignLvl * 100,
-                campaignLvl: user.campaignLvl + 1
+                modalText: `you passed ${stage} levels and earn ${stage * 100}`,
+                gold: user.gold + stage * 100
             })
-        }
-        if (winCheck.current === false) {
             window.history.back(-1)
-            setUser({...user, modalVision: true, modalText: 'better luck next time('})
         }
-    }, [winCheck.current])
+    }, [heroes])
 
     return (
         <div className={'BGWrap'}>
+            <div className='stage'>stage:{stage}</div>
             <div className={'BG__heroes'}>
                 {heroes.map((hero) => {
                     return (<BattleHero hero={hero}
                                         key={hero.key}
-                                        animation={hero.animation}
-                    />)
+                                        animation={hero.animation}/>)
                 })}
             </div>
             <div className={'BG__enemies'}>
                 {enemies.map((enemy) => {
                     return (<Enemy enemy={enemy}
-                                   key={enemy.key}
-                    />)
+                                   key={enemy.key}/>)
                 })}
             </div>
         </div>
     )
 }
 
-export default CampaignBG;
+export default EverlastTower;
