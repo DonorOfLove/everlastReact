@@ -70,7 +70,7 @@ const Immortal = (props) => {
     }, [heroes])
 
     return (
-        <div className={'BGWrap'}>
+        <div className={'BGWrap'+' '+'immortalBG'}>
             <div className={'BG__heroes'}>
                 {heroes.map((hero) => {
                     return (<BattleHero hero={hero}

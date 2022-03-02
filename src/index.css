@@ -49,15 +49,22 @@ a {
 .header {
     display: flex;
     justify-content: space-between;
+    background-color: #5b3c79;
 }
 
 /*------------store*/
-
+.store{
+    background-image: url("assets/backgrounds/store.png");
+    height: 100%;
+    background-size: cover;
+}
 .chest {
-    border: 4px solid #68340f;
+
     width: 100px;
     height: 100px;
-    background-color: saddlebrown;
+    background-image: url("assets/backgrounds/chest.png");
+    background-size: cover;
+    font-size: 2vw;
 }
 
 .map {
@@ -65,18 +72,31 @@ a {
     flex-direction: column;
     text-align: center;
     margin: 0 auto;
-
+    background-image: url("assets/backgrounds/map.gif");
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    justify-content: space-around;
 }
 
-
+.heroesBG{
+    background-image: url("assets/backgrounds/heroes.gif");
+    background-size:cover;
+    height: 100%;
+}
 .heroes {
     display: flex;
     flex-wrap: wrap;
 }
 
+.BattleHero img {
+    width: 23vw;
+    min-width: 250px;
+}
+
 .main {
     overflow-y: auto; /*Вертикальная полоса прокрутки для текста*/
-    padding: 10px; /*отступы текста со всех сторон*/
+
     text-align: justify; /*выравнивание текста по левому и правому краям*/
     flex-grow: 1; /*Предписываем занять все свободное пространство*/
     background-color: #191d24;
@@ -85,7 +105,7 @@ a {
 .footer {
     display: flex;
     height: 7vw;
-    background-color: #8c5ebb;
+    background-color: #5b3c79;
     justify-content: space-around;
     flex-grow: 0; /*Запрещаем увеличиваться*/
     flex-shrink: 0; /*Запрещаем сжиматься*/
@@ -96,20 +116,20 @@ a {
 
 .footer a {
     color: #e3e3e3;
-    border: 3px solid #5b377d;
+    border: 3px solid #775295;
     width: 34%;
     text-align: center;
 
 }
 
 .footer a:hover {
-    background-color: #6f4999;
+    background-color: #885dba;
     transition: 0.3s;
     margin-top: -5px;
 }
 
 .hero {
-    width: 10vw ;
+    width: 10vw;
     height: 8vw;
     display: flex;
     font-size: 2vw;
@@ -127,17 +147,19 @@ a {
     position: marker;
 }
 
-.BattleHero {
-    grid-area: auto;
-}
-.hero_margin{
+.hero_margin {
     background-color: #5b377d;
 }
 
 .hp__bar {
+    margin: 0 auto;
+    display: flex;
     text-align: center;
     width: 15%;
+    color: #21bf21;
     font-size: 2vw;
+    font-weight: bold;
+    justify-items: center;
 }
 
 .BGWrap {
@@ -146,26 +168,35 @@ a {
     justify-content: space-between;
     width: 100%;
     height: 100%;
-}
-.CampaignBG{
-    background-image: url("assets/backgrounds/cave.png");
     background-size: contain;
+}
+
+.CampaignBG {
+    background-image: url("assets/backgrounds/campaign.png");
+
+}
+
+.immortalBG {
+    background-image: url("assets/backgrounds/immortal.gif");
+    background-size: cover;
+;
+}
+
+.everlastBG {
+    background-image: url("assets/backgrounds/everlast.gif");
+    background-size: 95%;
+    background-position-y: -10vw;
+
 }
 
 .BG__heroes {
     align-self: end;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: column;
-    grid-template-areas:
-    "back1  forward"
-    "back2  forward";
+    display: flex;
+    margin-bottom: 5vw;
 }
 
 .stats {
-    font-size: 1.3vw  ;
+    font-size: 1.3vw;
     display: none;
     position: absolute;
     margin-top: 8vw;
@@ -182,7 +213,7 @@ a {
     color: #e7e7e7;
     padding: 1vw;
     text-transform: none;
-    width: 10vw ;
+    width: 10vw;
 }
 
 .item {
@@ -272,11 +303,31 @@ a {
 }
 
 @media (max-width: 770px) {
-    .stats{
-       font-size: 2.5vw;
+    .stats {
+        font-size: 2.5vw;
     }
-    .item__stats{
+
+    .item__stats {
         margin-left: 10vw;
         width: 20vw;
+    }
+}
+@media (min-width: 1090px) {
+    .immortalBG{
+        background-size: contain;
+    }
+}
+@media (max-width: 1360px) {
+    .everlastBG{
+        margin: 0;
+        background-size: cover;
+        background-position-y: 0;
+
+    }
+}
+@media (max-width: 1280px) {
+    .CampaignBG{
+        background-size: cover;
+        padding-bottom: 10vw;
     }
 }

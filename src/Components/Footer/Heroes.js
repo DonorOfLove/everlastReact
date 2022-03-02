@@ -26,7 +26,7 @@ const Heroes = (props) => {
     }
 
     return (
-        <div>
+        <div className='heroesBG'>
             <div className='heroes'>
                 <span>Camp:</span>
                 {heroes.map((hero, index) => {

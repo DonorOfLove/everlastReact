@@ -9,7 +9,6 @@ import whichAtck from "./assets/animations/B_witchAtck.gif"
 import warriorIdle from "./assets/animations/warriorIdle.gif"
 import warriorAtck from "./assets/animations/WarriorAtck.gif"
 
-
 import Modal from "./Components/Modal";
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
     let [heroes, setHeroes] = useState([
         {
             role: 'tank',
-            name: 'Jaj',
+            name: 'Torn',
             hp: 5,
             damage: 2,
             atkSpeed: 2000,
@@ -48,7 +47,7 @@ function App() {
         heroesPull: [
             {
                 role: 'dd',
-                name: 'Angry',
+                name: 'Kaori',
                 hp: 5,
                 damage: 3,
                 atkSpeed: 3000,
@@ -91,7 +90,7 @@ function App() {
             },
             {
                 role: 'heal',
-                name: 'Mola',
+                name: 'Loveful',
                 hp: 5,
                 damage: 2,
                 atkSpeed: 2000,
@@ -107,7 +106,7 @@ function App() {
             },
             {
                 role: 'dd',
-                name: 'Remound',
+                name: 'Shugheku',
                 hp: 2,
                 damage: 5,
                 atkSpeed: 3000,
@@ -144,26 +143,27 @@ function App() {
         ]
     })
 
-    useEffect(() => {
-        window.addEventListener('unload', () => {
-            localStorage.setItem('user', JSON.stringify(user))
-            localStorage.setItem('heroes', JSON.stringify(heroes))
-            localStorage.setItem('gameAvailability', JSON.stringify(gameAvailability))
-
-        })
-    })          //  LOCAL STORE SET
-    useEffect(() => {
-        setHeroes(JSON.parse(localStorage.getItem('heroes')))
-        setUser(JSON.parse(localStorage.getItem('user')))
-        setGameAvailability(JSON.parse(localStorage.getItem('gameAvailability')))
-        // if (user.name == '') {
-        //     setUser({
-        //         ...user, modalVision: true, modalText: <input onChange={(e) => {
-        //             user.name=e.target.val
-        //         }}/>
-        //     })
-        // }
-    }, []) //LOCAL STORE GET
+    // useEffect(() => {
+    //     window.addEventListener('unload', () => {
+    //         localStorage.setItem('user', JSON.stringify(user))
+    //         localStorage.setItem('heroes', JSON.stringify(heroes))
+    //         localStorage.setItem('gameAvailability', JSON.stringify(gameAvailability))
+    //
+    //     })
+    // })          //  LOCAL STORE SET
+    //
+    // useEffect(() => {
+    //     setHeroes(JSON.parse(localStorage.getItem('heroes')))
+    //     setUser(JSON.parse(localStorage.getItem('user')))
+    //     setGameAvailability(JSON.parse(localStorage.getItem('gameAvailability')))
+    //     // if (user.name == '') {
+    //     //     setUser({
+    //     //         ...user, modalVision: true, modalText: <input onChange={(e) => {
+    //     //             user.name=e.target.val
+    //     //         }}/>
+    //     //     })
+    //     // }
+    // }, []) //LOCAL STORE GET
 
     return (
         <Context.Provider value={{user, setUser, heroes, setHeroes, gameAvailability, setGameAvailability}}>

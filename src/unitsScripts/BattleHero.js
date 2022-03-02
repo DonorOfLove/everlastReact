@@ -7,7 +7,7 @@ const BattleHero = ({hero,animation}) => {
 
         <div className='BattleHero'>
             <div className={'hp__bar'}>{Math.floor(hero.hp*10)/10}</div>
-            <img src={animation} alt="" width={210}height={140}/>
+            <img src={animation} alt=""/>
         </div>
     );
 };

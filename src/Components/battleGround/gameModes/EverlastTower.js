@@ -102,7 +102,7 @@ const EverlastTower = (props) => {
     }, [heroes])
 
     return (
-        <div className={'BGWrap'}>
+        <div className={'BGWrap'+' '+'everlastBG'}>
             <div className='stage'>stage:{stage}</div>
             <div className={'BG__heroes'}>
                 {heroes.map((hero) => {
