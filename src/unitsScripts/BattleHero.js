@@ -1,5 +1,5 @@
 import React from 'react';
-import img from "../assets/animations/B_witch.gif";
+import img from "../assets/animations/heroAnimations/witch_idle.gif";
 
 const BattleHero = ({hero,animation}) => {
 
@@ -8,6 +8,7 @@ const BattleHero = ({hero,animation}) => {
         <div className='BattleHero'>
             <div className={'hp__bar'}>{Math.floor(hero.hp*10)/10}</div>
             <img src={animation} alt=""/>
+
         </div>
     );
 };

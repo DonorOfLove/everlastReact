@@ -9,16 +9,29 @@ const CampaignBG = (props) => {
     const winCheck = React.useRef()
     const heroAtckAnimation = props.heroAtckAnimaton
     const heroIdleAnimation = props.heroIdleAnimation
+    const enemyAtckAnimation=props.enemyAnimation[1]
+    const enemyIdleAnimation=props.enemyAnimation[0]
+
 
     let [enemies, setEnemies] = React.useState(() => {
         if (user.campaignLvl % 5 == 0) {
             return [{hp: 20, damage: 1, atkSpeed: 3000, defence: 10, key: Math.random()}]
         } else {
-            return [{hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random()},
+            return [{hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random(),animation:enemyIdleAnimation,idle:enemyIdleAnimation, atck:enemyAtckAnimation},
+                {hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random(),animation:enemyIdleAnimation,idle:enemyIdleAnimation, atck:enemyAtckAnimation},
+                {hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random(),animation:enemyIdleAnimation,idle:enemyIdleAnimation, atck:enemyAtckAnimation},
             ]
         }
     })
     let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(props.state.heroes)))
+
+    function enemyAtck(enemy) {
+        setEnemies([...enemies], enemy.animation = enemy.atck)
+    }
+
+    function enemyIdle(enemy) {
+        setEnemies([...enemies], enemy.animation = enemy.idle)
+    }
 
     function checkNoBack(timer) {
         if (window.location.href !== 'http://localhost:3000/BattleGround/CampaignBG') {
@@ -43,7 +56,6 @@ const CampaignBG = (props) => {
                         newEnemy.hp = enemyWithNewHP
                         setEnemies([...enemies], {newEnemy})
                         setEnemies(enemies = enemies.filter(thisTarget => thisTarget.hp > 0))
-                        console.log(enemies)
                     } catch (e) {
                         winCheck.current = true
                         heroIdleAnimation(hero)
@@ -59,6 +71,7 @@ const CampaignBG = (props) => {
         for (let enemy of enemies) {
             const timer = setInterval(() => {
                 checkNoBack(timer)
+                enemyAtck(enemy)
                 if (enemy.hp > 0) {
                     try {
                         const randomInt = Math.floor(Math.random() * heroes.length)
@@ -71,6 +84,7 @@ const CampaignBG = (props) => {
                         winCheck.current = false
                         clearInterval(timer)
                     }
+                    setTimeout(() => enemyIdle(enemy), 1300)
                 }
             }, enemy.atkSpeed)
         }
@@ -105,7 +119,8 @@ const CampaignBG = (props) => {
             <div className={'BG__enemies'}>
                 {enemies.map((enemy) => {
                     return (<Enemy enemy={enemy}
-                                   key={enemy.key}/>)
+                                   key={enemy.key}
+                                    animation={enemy.animation}/>)
                 })}
             </div>
         </div>

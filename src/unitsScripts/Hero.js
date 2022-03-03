@@ -22,13 +22,14 @@ const Hero = ({hero, addToCamp, remove}) => {
     }
 
     return (
-        <div className={['hero' + ' ' + hero.role]}
+        <div className='hero'
              onMouseEnter={enterEvent}
              onMouseLeave={leaveEvent}
              onClick={addToCamp || remove}>
-            <p>{hero.name + '\n' + hero.lvl} </p>
+            <img src={hero.icon}/>
             <div className='stats' id='stats'>
                 <ul className='stats__ul'>
+                    <li>{hero.name}</li>
                     <li>hp:{hero.hp}+
                         <span className='additionalStats'>{getAdditionalStats(hero, 'hp')}</span></li>
                     <li>dmg:{hero.damage}+

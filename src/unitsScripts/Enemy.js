@@ -1,12 +1,14 @@
 import React from 'react';
+import img from "../assets/animations/heroAnimations/witch_idle.gif";
 
-const Enemy = (props) => {
+const Enemy = ({enemy,animation}) => {
 
-    const enemy = props.enemy
 
     return (
         <div>
-            {enemy.hp}
+
+            <div className={'hp__bar'}>{enemy.hp}</div>
+            <img src={animation}/>
         </div>
     );
 };

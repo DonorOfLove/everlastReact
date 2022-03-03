@@ -4,11 +4,12 @@ import {Routes, Route} from 'react-router-dom'
 import BattleGround from "./Components/battleGround/BattleGround";
 import MainMenu from "./Components/MainMenu";
 import Context from "./context";
-import witchIdle from "./assets/animations/B_witch.gif"
-import whichAtck from "./assets/animations/B_witchAtck.gif"
-import warriorIdle from "./assets/animations/warriorIdle.gif"
-import warriorAtck from "./assets/animations/WarriorAtck.gif"
-
+import witchIdle from "./assets/animations/heroAnimations/witch_idle.gif"
+import whitchAtck from "./assets/animations/heroAnimations/witch_atck.gif"
+import whitchIcon from "./assets/heroIcons/witch_icon.png"
+import warriorIdle from "./assets/animations/heroAnimations/warrior_idle.gif"
+import warriorAtck from "./assets/animations/heroAnimations/warrior_atck.gif"
+import warriorIcon from "./assets/heroIcons/warrior_icon.png"
 import Modal from "./Components/Modal";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             lvl: 1,
             id: Math.random(),
             key: Math.random(),
+            icon:warriorIcon,
             animation: warriorIdle,
             atck: warriorAtck,
             idle: warriorIdle,
@@ -55,9 +57,10 @@ function App() {
                 lvl: 1,
                 id: Math.random(),
                 key: Math.random(),
+                icon: whitchIcon,
                 animation: witchIdle,
                 idle: witchIdle,
-                atck: whichAtck,
+                atck: whitchAtck,
                 animationSpeed: 900,
                 items: {
                     helmet: {name: 'juniors helmet', type: 'iron', hp: 1, defence: 1},

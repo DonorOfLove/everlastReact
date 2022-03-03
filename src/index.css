@@ -129,16 +129,17 @@ a {
 }
 
 .hero {
-    width: 10vw;
-    height: 8vw;
+    border: 2px solid #6b4a8e;
+    width:5vw;
     display: flex;
     font-size: 2vw;
-    flex-direction: row;
+    flex-direction: column;
     margin: 1vw;
     position: center;
     text-align: center;
     justify-content: center;
 }
+
 
 .hero:hover {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
@@ -199,7 +200,7 @@ a {
     font-size: 1.3vw;
     display: none;
     position: absolute;
-    margin-top: 8vw;
+    margin-top: 20vw;
     background-color: rgb(138, 90, 189, 50%);
     border: 0.4vw solid #451672;
 }
@@ -229,20 +230,6 @@ a {
 
 .additionalStats {
     color: #148b14;
-}
-
-.tank {
-    border: 3px solid #282844;
-    border-bottom-left-radius: 80px;
-    border-bottom-right-radius: 80px;
-}
-
-.heal {
-    border: 3px solid green;
-}
-
-.dd {
-    border: 3px solid red;
 }
 
 .modal {

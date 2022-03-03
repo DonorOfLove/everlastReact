@@ -3,26 +3,31 @@ import {Routes, Route} from 'react-router-dom'
 import CampaignBG from "./gameModes/CampaignBG";
 import EverlastTower from "./gameModes/EverlastTower";
 import Immortal from "./gameModes/Immortal";
-// import batIdle from "./assets/animations/bat_Idle.gif"
-// import batAtck from "assert/animations"
+import batIdle from "../../assets/animations/enemyAnimations/bat_idle.gif"
+import batAtck from "../../assets/animations/enemyAnimations/bat_atck.gif"
+import skeletAtck from "../../assets/animations/enemyAnimations/Skeleton_atck.gif"
+import skeletIdle from "../../assets/animations/enemyAnimations/Skeleton_idle.gif"
+import fantasmaAtck from "../../assets/animations/enemyAnimations/Sprite-fantafantasma_atck.gif"
+import fantasmaIdle from "../../assets/animations/enemyAnimations/Sprite-fantfantasma_idle.gif"
 
 const BattleGround = (props) => {
 
     const [user, setUser] = [props.user, props.setUser]
     const [heroes, setHeroes] = [props.heroes, props.setHeroes]
     const [counter, setCounter] = React.useState(0)
-    const [bgLoad,setBgLoad]=React.useState(false)
+    const [bgLoad, setBgLoad] = React.useState(false)
 
-    React.useEffect(()=>{setBgLoad(true)},[])
+    React.useEffect(() => {
+        setBgLoad(true)
+    }, [])
 
-    // function randomEnemyAnimation(){
-    //
-    //    let animations= [[batIdle,batAtck]]
-    //     let randomInt=Math.random()*animations
-    //     console.log(randomInt)
-    // }
-    //
-    // randomEnemyAnimation()
+    function randomEnemyAnimation() {
+        let animations = [[batIdle, batAtck,],[skeletIdle,skeletAtck],[fantasmaIdle,fantasmaAtck]]
+        let randomInt = Math.floor(Math.random() * animations.length)
+        return animations[randomInt]
+    }
+
+
     function heroAtckAnimation(hero) {
         setHeroes([...heroes], hero.animation = hero.atck)
     }
@@ -30,6 +35,8 @@ const BattleGround = (props) => {
     function heroIdleAnimation(hero) {
         setHeroes([...heroes], hero.animation = hero.idle)
     }
+
+
 
     function addAdditionalStats(hero) {
         for (let item of Object.entries(hero.items)) {
@@ -48,6 +55,7 @@ const BattleGround = (props) => {
                 <Route path='CampaignBG' element={<CampaignBG state={props}
                                                               heroAtckAnimaton={heroAtckAnimation}
                                                               heroIdleAnimation={heroIdleAnimation}
+                                                              enemyAnimation={randomEnemyAnimation()}
                                                               setUser={setUser}
                                                               user={user}
                                                               addStats={addAdditionalStats}
