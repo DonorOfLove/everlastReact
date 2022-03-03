@@ -9,6 +9,8 @@ import skeletAtck from "../../assets/animations/enemyAnimations/Skeleton_atck.gi
 import skeletIdle from "../../assets/animations/enemyAnimations/Skeleton_idle.gif"
 import fantasmaAtck from "../../assets/animations/enemyAnimations/Sprite-fantafantasma_atck.gif"
 import fantasmaIdle from "../../assets/animations/enemyAnimations/Sprite-fantfantasma_idle.gif"
+import slimeAtck from "../../assets/animations/enemyAnimations/slime_atck.gif"
+import slimeIdle from "../../assets/animations/enemyAnimations/slime_idle.gif"
 
 const BattleGround = (props) => {
 
@@ -22,7 +24,7 @@ const BattleGround = (props) => {
     }, [])
 
     function randomEnemyAnimation() {
-        let animations = [[batIdle, batAtck,],[skeletIdle,skeletAtck],[fantasmaIdle,fantasmaAtck]]
+        let animations = [[batIdle, batAtck,1200],[fantasmaIdle,fantasmaAtck,900],[slimeIdle,slimeAtck,800]]
         let randomInt = Math.floor(Math.random() * animations.length)
         return animations[randomInt]
     }
@@ -67,7 +69,8 @@ const BattleGround = (props) => {
                                                                     setUser={setUser}
                                                                     user={user}
                                                                     addStats={addAdditionalStats}
-                                                                    bgLoad={bgLoad}/>}
+                                                                    bgLoad={bgLoad}
+                                                                    enemyAnimation={randomEnemyAnimation()}/>}
                 />
                 <Route path='Immortal' element={<Immortal state={props}
                                                           heroAtckAnimaton={heroAtckAnimation}

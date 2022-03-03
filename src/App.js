@@ -9,7 +9,17 @@ import whitchAtck from "./assets/animations/heroAnimations/witch_atck.gif"
 import whitchIcon from "./assets/heroIcons/witch_icon.png"
 import warriorIdle from "./assets/animations/heroAnimations/warrior_idle.gif"
 import warriorAtck from "./assets/animations/heroAnimations/warrior_atck.gif"
-import warriorIcon from "./assets/heroIcons/warrior_icon.png"
+// import warriorIcon from "./assets/heroIcons/warrior_icon.png
+import shughekuAtck from "./assets/animations/heroAnimations/shugheku_atck.gif"
+import shughekuIdle from "./assets/animations/heroAnimations/shugheku_idle.gif"
+import shughekuIcon from "./assets/heroIcons/shugheku_icon.png"
+import memphisAtck from "./assets/animations/heroAnimations/Memphis_atck.gif"
+import memphisIdle from "./assets/animations/heroAnimations/Memphis_idle.gif"
+import memphisIcon from "./assets/heroIcons/Memphis_icon.png"
+import defcaleonAtck from "./assets/animations/heroAnimations/defcaleon_atck.gif"
+import defcaleonIdle from "./assets/animations/heroAnimations/defcaleon_idle.gif"
+import defcaleonIcon from "./assets/heroIcons/defcaleon_icon.png"
+
 import Modal from "./Components/Modal";
 
 function App() {
@@ -25,13 +35,54 @@ function App() {
             lvl: 1,
             id: Math.random(),
             key: Math.random(),
-            icon:warriorIcon,
+            // icon:warriorIcon,
             animation: warriorIdle,
             atck: warriorAtck,
             idle: warriorIdle,
             animationSpeed: 1300,
             items: {
                 helmet: {name: 'juniors helmet', type: 'iron', hp: 1, defence: 1},
+                armor: {},
+                weapon: {}
+            }
+        },
+        {
+            role: 'dd',
+            name: 'Shugheku',
+            hp: 2,
+            damage: 5,
+            atkSpeed: 3000,
+            defence: 2,
+            lvl: 1,
+            id: Math.random(),
+            key: Math.random(),
+            icon: shughekuIcon,
+            animation: shughekuIdle,
+            atck: shughekuAtck,
+            idle: shughekuIdle,
+            animationSpeed: 1600,
+            items: {
+                helmet: {},
+                armor: {},
+                weapon: {}
+            }
+        },
+        {
+            role: 'tank',
+            name: 'Defcaleon',
+            hp: 2,
+            damage: 1,
+            atkSpeed: 4500,
+            defence: 10,
+            icon: defcaleonIcon,
+            animation: defcaleonIdle,
+            idle: defcaleonIdle,
+            atck:defcaleonAtck,
+            animationSpeed: 1500,
+            lvl: 1,
+            id: Math.random(),
+            items: {
+                helmet: {},
                 armor: {},
                 weapon: {}
             }
@@ -47,6 +98,27 @@ function App() {
         modalVision: false,
         modalText: 'something went wrong :,(',
         heroesPull: [
+            {
+                role: 'dd',
+                name: 'Memphis',
+                hp: 2,
+                damage: 3,
+                atkSpeed: 2000,
+                defence: 2,
+                lvl: 1,
+                id: Math.random(),
+                key: Math.random(),
+                icon: memphisIcon,
+                animation: memphisIdle,
+                atck: memphisAtck,
+                idle: memphisIdle,
+                animationSpeed: 1700,
+                items: {
+                    helmet: {},
+                    armor: {},
+                    weapon: {}
+                }
+            },
             {
                 role: 'dd',
                 name: 'Kaori',
@@ -77,20 +149,27 @@ function App() {
     const [gameAvailability, setGameAvailability] = useState({
         heroes: [
             {
-                role: 'tank',
-                name: 'Grog',
+                role: 'dd',
+                name: 'Memphis',
                 hp: 2,
-                damage: 1,
+                damage: 5,
                 atkSpeed: 3000,
-                defence: 10,
+                defence: 2,
                 lvl: 1,
                 id: Math.random(),
+                key: Math.random(),
+                icon: memphisIcon,
+                animation: memphisIdle,
+                atck: memphisAtck,
+                idle: memphisIdle,
+                animationSpeed: 1600,
                 items: {
                     helmet: {},
                     armor: {},
                     weapon: {}
                 }
             },
+
             {
                 role: 'heal',
                 name: 'Loveful',
@@ -107,22 +186,7 @@ function App() {
                     weapon: {}
                 }
             },
-            {
-                role: 'dd',
-                name: 'Shugheku',
-                hp: 2,
-                damage: 5,
-                atkSpeed: 3000,
-                defence: 2,
-                lvl: 1,
-                id: Math.random(),
-                key: Math.random(),
-                items: {
-                    helmet: {},
-                    armor: {},
-                    weapon: {}
-                }
-            },
+
             {
                 role: 'heal',
                 name: 'Baptized',

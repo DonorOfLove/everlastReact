@@ -20,6 +20,14 @@ const EverlastTower = (props) => {
         }
     }
 
+    function enemyAtck(enemy) {
+        setEnemies([...enemies], enemy.animation = enemy.atck)
+    }
+
+    function enemyIdle(enemy) {
+        setEnemies([...enemies], enemy.animation = enemy.idle)
+    }
+
     function heroesAtck() {
         if (!props.bgLoad) {
             window.location.href = "http://localhost:3000/map"
@@ -51,6 +59,7 @@ const EverlastTower = (props) => {
         for (let enemy of enemies) {
             const timer = setInterval(() => {
                 checkNoBack(timer)
+                enemyAtck(enemy)
                 if (enemy.hp > 0) {
                     try {
                         const randomInt = Math.floor(Math.random() * heroes.length)
@@ -62,6 +71,7 @@ const EverlastTower = (props) => {
                     } catch (e) {
                         clearInterval(timer)
                     }
+                    // setTimeout(() => enemyIdle(enemy), enemy.animationSpeed)
                 }
             }, enemy.atkSpeed)
         }
@@ -80,9 +90,11 @@ const EverlastTower = (props) => {
 
     useEffect(() => {
         if (enemies.length == 0) {
+          const an=  props.enemyAnimation
+            console.log(an)
             setEnemies(enemies = [
-                {hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random()},
-                {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random()},
+                {hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random(),animation:an[0],idle:an[0],atck:an[1],animationSpeed:an[2]},
+                {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random(),animation:an[0],idle:an[0],atck:an[1],animationSpeed:an[2]},
             ])
             enemyAtck()
         }
@@ -114,7 +126,8 @@ const EverlastTower = (props) => {
             <div className={'BG__enemies'}>
                 {enemies.map((enemy) => {
                     return (<Enemy enemy={enemy}
-                                   key={enemy.key}/>)
+                                   key={enemy.key}
+                    animation={enemy.animation}/>)
                 })}
             </div>
         </div>

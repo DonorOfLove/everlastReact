@@ -91,8 +91,13 @@ a {
 
 .BattleHero img {
     width: 23vw;
-    min-width: 250px;
+
 }
+.BattleHero{
+    width: 33%;
+    max-height: 33%;
+}
+
 
 .main {
     overflow-y: auto; /*Вертикальная полоса прокрутки для текста*/
@@ -139,7 +144,9 @@ a {
     text-align: center;
     justify-content: center;
 }
-
+.immortal{
+    width: 80vw;
+}
 
 .hero:hover {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
@@ -172,6 +179,7 @@ a {
     background-size: contain;
 }
 
+
 .CampaignBG {
     background-image: url("assets/backgrounds/campaign.png");
 
@@ -194,8 +202,27 @@ a {
     align-self: end;
     display: flex;
     margin-bottom: 5vw;
+    align-content: end;
+    align-items: end;
+    width: 50%;
+
 }
 
+.BG__enemies{
+    align-self: end;
+    display: flex;
+    margin-bottom: 5vw;
+    align-content: end;
+    align-items: end;
+    width: 50%;
+    justify-content: right;
+}
+.damage_counter{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    justify-content: center;
+}
 .stats {
     font-size: 1.3vw;
     display: none;

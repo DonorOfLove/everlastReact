@@ -11,6 +11,7 @@ const CampaignBG = (props) => {
     const heroIdleAnimation = props.heroIdleAnimation
     const enemyAtckAnimation=props.enemyAnimation[1]
     const enemyIdleAnimation=props.enemyAnimation[0]
+    const sec=props.enemyAnimation[2]
 
 
     let [enemies, setEnemies] = React.useState(() => {
@@ -84,7 +85,7 @@ const CampaignBG = (props) => {
                         winCheck.current = false
                         clearInterval(timer)
                     }
-                    setTimeout(() => enemyIdle(enemy), 1300)
+                    setTimeout(() => enemyIdle(enemy), sec)
                 }
             }, enemy.atkSpeed)
         }

@@ -1,9 +1,11 @@
 import React, {useEffect, useContext} from 'react';
 import BattleHero from "../../../unitsScripts/BattleHero";
 import Context from "../../../context";
+import idle from "../../../assets/animations/enemyAnimations/immortal_idle.gif"
+import atck from "../../../assets/animations/enemyAnimations/immortal_atck.gif"
 
 const Immortal = (props) => {
-
+    const immortalImg=document.getElementsByClassName('immortal')[0]
     let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(props.state.heroes)))
     const heroAtckAnimation = props.heroAtckAnimaton
     const heroIdleAnimation = props.heroIdleAnimation
@@ -41,7 +43,12 @@ const Immortal = (props) => {
         const timer = setTimeout(() => {
             if (window.location.href !== 'http://localhost:3000/BattleGround/Immortal') {
                 clearInterval(timer)
+
             }
+           try {
+               immortalImg.src=atck
+           } catch (e){
+               console.log(e)}
             try {
                 const randomInt = Math.floor(Math.random() * heroes.length)
                 const heroWithNewHP = heroes[randomInt].hp - immortal.damage
@@ -53,6 +60,10 @@ const Immortal = (props) => {
             } catch (e) {
                 clearInterval(timer)
             }
+            setTimeout(() =>{ try {
+                immortalImg.src=idle
+            } catch (e){
+                console.log(e)}}, 1700)
         }, immortal.atckSpeed)
     }, [immortal.atckCounter])
 
@@ -71,6 +82,7 @@ const Immortal = (props) => {
 
     return (
         <div className={'BGWrap'+' '+'immortalBG'}>
+            <div className='damage_counter'>damage:{counter}</div>
             <div className={'BG__heroes'}>
                 {heroes.map((hero) => {
                     return (<BattleHero hero={hero}
@@ -79,7 +91,7 @@ const Immortal = (props) => {
                 })}
             </div>
             <div className={'BG__enemies'}>
-                damage:{counter}
+                <img src={idle} className='immortal'/>
             </div>
         </div>
     );
