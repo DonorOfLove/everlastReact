@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/everlastReact/static/css/main.c0e5931a.chunk.css",
+    "main.js": "/everlastReact/static/js/main.94a7b640.chunk.js",
+    "main.js.map": "/everlastReact/static/js/main.94a7b640.chunk.js.map",
+    "runtime~main.js": "/everlastReact/static/js/runtime~main.321424fd.js",
+    "runtime~main.js.map": "/everlastReact/static/js/runtime~main.321424fd.js.map",
+    "static/js/2.b9ed46bf.chunk.js": "/everlastReact/static/js/2.b9ed46bf.chunk.js",
+    "static/js/2.b9ed46bf.chunk.js.map": "/everlastReact/static/js/2.b9ed46bf.chunk.js.map",
+    "index.html": "/everlastReact/index.html",
+    "precache-manifest.81d385dfcb42dbfae0d5965b7ead0ded.js": "/everlastReact/precache-manifest.81d385dfcb42dbfae0d5965b7ead0ded.js",
+    "service-worker.js": "/everlastReact/service-worker.js",
+    "static/css/main.c0e5931a.chunk.css.map": "/everlastReact/static/css/main.c0e5931a.chunk.css.map",
+    "static/media/index.css": "/everlastReact/static/media/store.cc012d9b.png",
+    "static/media/Memphis_atck.gif": "/everlastReact/static/media/Memphis_atck.294e8209.gif",
+    "static/media/Memphis_idle.gif": "/everlastReact/static/media/Memphis_idle.69e473a8.gif",
+    "static/media/Skeleton_atck.gif": "/everlastReact/static/media/Skeleton_atck.0ea693be.gif",
+    "static/media/Skeleton_idle.gif": "/everlastReact/static/media/Skeleton_idle.18988456.gif",
+    "static/media/Sprite-fantfantasma_idle.gif": "/everlastReact/static/media/Sprite-fantfantasma_idle.8904e8a8.gif",
+    "static/media/defcaleon_atck.gif": "/everlastReact/static/media/defcaleon_atck.72247da0.gif",
+    "static/media/defcaleon_idle.gif": "/everlastReact/static/media/defcaleon_idle.3fd6d139.gif",
+    "static/media/immortal_atck.gif": "/everlastReact/static/media/immortal_atck.74bc04a7.gif",
+    "static/media/immortal_idle.gif": "/everlastReact/static/media/immortal_idle.577ac35f.gif",
+    "static/media/shugheku_atck.gif": "/everlastReact/static/media/shugheku_atck.bdba5825.gif",
+    "static/media/shugheku_idle.gif": "/everlastReact/static/media/shugheku_idle.059e8854.gif",
+    "static/media/warrior_atck.gif": "/everlastReact/static/media/warrior_atck.01d6340c.gif",
+    "static/media/witch_atck.gif": "/everlastReact/static/media/witch_atck.ab2924ad.gif"
+  }
+}
