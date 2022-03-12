@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "722eb4ebb422f2a39c0c135a45381e39",
+    "revision": "934f84aa1eaa3ed52bdbb59815bbc130",
     "url": "/everlastReact/index.html"
   },
   {
-    "revision": "990b9044facacc87a4e8",
+    "revision": "dbb188ef2ca8bb6c6c0b",
     "url": "/everlastReact/static/css/main.007a2d7f.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/everlastReact/static/js/2.35d62c1f.chunk.js"
   },
   {
-    "revision": "990b9044facacc87a4e8",
-    "url": "/everlastReact/static/js/main.c565d1e5.chunk.js"
+    "revision": "dbb188ef2ca8bb6c6c0b",
+    "url": "/everlastReact/static/js/main.8e1c4cd3.chunk.js"
   },
   {
     "revision": "762ca94febf6d3194fa6",
