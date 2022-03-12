@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/everlastReact/precache-manifest.81d385dfcb42dbfae0d5965b7ead0ded.js"
+  "/everlastReact/precache-manifest.94ce8815df846e2ddda6c30f057a7d86.js"
 );
 
 self.addEventListener('message', (event) => {
