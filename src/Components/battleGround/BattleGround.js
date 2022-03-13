@@ -29,7 +29,6 @@ const BattleGround = (props) => {
         return animations[randomInt]
     }
 
-
     function heroAtckAnimation(hero) {
         setHeroes([...heroes], hero.animation = hero.atck)
     }
@@ -37,8 +36,6 @@ const BattleGround = (props) => {
     function heroIdleAnimation(hero) {
         setHeroes([...heroes], hero.animation = hero.idle)
     }
-
-
 
     function addAdditionalStats(hero) {
         for (let item of Object.entries(hero.items)) {

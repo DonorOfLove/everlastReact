@@ -3,9 +3,10 @@ import BattleHero from "../../../unitsScripts/BattleHero";
 import Context from "../../../context";
 import idle from "../../../assets/animations/enemyAnimations/immortal_idle.gif"
 import atck from "../../../assets/animations/enemyAnimations/immortal_atck.gif"
+import {useNavigate} from "react-router-dom";
 
 const Immortal = (props) => {
-    const immortalImg=document.getElementsByClassName('immortal')[0]
+    const immortalImg = document.getElementsByClassName('immortal')[0]
     let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(props.state.heroes)))
     const heroAtckAnimation = props.heroAtckAnimaton
     const heroIdleAnimation = props.heroIdleAnimation
@@ -13,16 +14,18 @@ const Immortal = (props) => {
     const [immortal, setImmortal] = React.useState({atckCounter: 0, damage: counter * 0.1, atckSpeed: 3000})
     const context = useContext(Context)
     const [user, setUser] = [context.user, context.setUser]
+    const history = useNavigate()
 
     function checkNoBack(timer) {
-        if (window.location.href !== 'http://localhost:3000/BattleGround/Immortal') {
+        if (window.location.pathname !== '/BattleGround/Immortal') {
             clearInterval(timer)
+            history('/Map')
         }
     }
 
     useEffect(() => {
         if (!props.bgLoad) {
-            window.location.href = "http://localhost:3000/map"
+            history('/Map')
         }
         for (let hero of heroes) {
             props.addStats(hero)
@@ -41,14 +44,12 @@ const Immortal = (props) => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            if (window.location.href !== 'http://localhost:3000/BattleGround/Immortal') {
-                clearInterval(timer)
-
+            checkNoBack(timer)
+            try {
+                immortalImg.src = atck
+            } catch (e) {
+                console.log(e)
             }
-           try {
-               immortalImg.src=atck
-           } catch (e){
-               console.log(e)}
             try {
                 const randomInt = Math.floor(Math.random() * heroes.length)
                 const heroWithNewHP = heroes[randomInt].hp - immortal.damage
@@ -60,10 +61,13 @@ const Immortal = (props) => {
             } catch (e) {
                 clearInterval(timer)
             }
-            setTimeout(() =>{ try {
-                immortalImg.src=idle
-            } catch (e){
-                console.log(e)}}, 1700)
+            setTimeout(() => {
+                try {
+                    immortalImg.src = idle
+                } catch (e) {
+                    console.log(e)
+                }
+            }, 1700)
         }, immortal.atckSpeed)
     }, [immortal.atckCounter])
 
@@ -76,12 +80,12 @@ const Immortal = (props) => {
                 gold: user.gold + counter,
                 immortalLastVisit: Date.now()
             })
-            window.history.back(-1)
+            history('/Map')
         }
     }, [heroes])
 
     return (
-        <div className={'BGWrap'+' '+'immortalBG'}>
+        <div className={'BGWrap' + ' ' + 'immortalBG'}>
             <div className='damage_counter'>damage:{counter}</div>
             <div className={'BG__heroes'}>
                 {heroes.map((hero) => {

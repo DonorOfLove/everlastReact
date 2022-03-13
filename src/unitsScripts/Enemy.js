@@ -5,8 +5,7 @@ const Enemy = ({enemy,animation}) => {
 
 
     return (
-        <div>
-
+        <div className='enemy'>
             <div className={'hp__bar'}>{enemy.hp}</div>
             <img src={animation}/>
         </div>

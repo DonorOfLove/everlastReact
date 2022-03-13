@@ -2,6 +2,7 @@ import React, {useEffect, useContext} from 'react';
 import BattleHero from "../../../unitsScripts/BattleHero";
 import Enemy from "../../../unitsScripts/Enemy";
 import Context from "../../../context";
+import {useNavigate} from "react-router-dom";
 
 const EverlastTower = (props) => {
 
@@ -13,24 +14,26 @@ const EverlastTower = (props) => {
     let [heroes, setHeroes] = React.useState(JSON.parse(JSON.stringify(props.state.heroes)))
     const heroAtckAnimation = props.heroAtckAnimaton
     const heroIdleAnimation = props.heroIdleAnimation
+    const history=useNavigate()
 
     function checkNoBack(timer) {
-        if (window.location.href !== 'http://localhost:3000/BattleGround/EverlastTower') {
+        if (window.location.pathname !== '/BattleGround/EverlastTower') {
             clearInterval(timer)
+            history('/Map')
         }
     }
 
-    function enemyAtck(enemy) {
+    function enemyAtckAnimation(enemy) {
         setEnemies([...enemies], enemy.animation = enemy.atck)
     }
 
-    function enemyIdle(enemy) {
+    function enemyIdleAnimation(enemy) {
         setEnemies([...enemies], enemy.animation = enemy.idle)
     }
 
     function heroesAtck() {
         if (!props.bgLoad) {
-            window.location.href = "http://localhost:3000/map"
+           history('/Map')
         }
         for (let hero of heroes) {
             const timer = setInterval(() => {
@@ -59,7 +62,7 @@ const EverlastTower = (props) => {
         for (let enemy of enemies) {
             const timer = setInterval(() => {
                 checkNoBack(timer)
-                enemyAtck(enemy)
+                enemyAtckAnimation(enemy)
                 if (enemy.hp > 0) {
                     try {
                         const randomInt = Math.floor(Math.random() * heroes.length)
@@ -71,7 +74,7 @@ const EverlastTower = (props) => {
                     } catch (e) {
                         clearInterval(timer)
                     }
-                    // setTimeout(() => enemyIdle(enemy), enemy.animationSpeed)
+                     setTimeout(() => enemyIdleAnimation(enemy), enemy.animationSpeed)
                 }
             }, enemy.atkSpeed)
         }
@@ -90,8 +93,8 @@ const EverlastTower = (props) => {
 
     useEffect(() => {
         if (enemies.length == 0) {
-          const an=  props.enemyAnimation
-            console.log(an)
+          const an = props.enemyAnimation
+            console.log('en')
             setEnemies(enemies = [
                 {hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random(),animation:an[0],idle:an[0],atck:an[1],animationSpeed:an[2]},
                 {hp: 5, damage: 1, atkSpeed: 3000, defence: 1, key: Math.random(),animation:an[0],idle:an[0],atck:an[1],animationSpeed:an[2]},
@@ -102,14 +105,14 @@ const EverlastTower = (props) => {
 
     useEffect(() => {
         if (heroes.length == 0) {
-            console.log('s')
             setUser({
                 ...user,
                 modalVision: true,
                 modalText: `you passed ${stage} levels and earn ${stage * 100}`,
                 gold: user.gold + stage * 100
             })
-            window.history.back(-1)
+            console.log('heroes')
+            history('/Map')
         }
     }, [heroes])
 

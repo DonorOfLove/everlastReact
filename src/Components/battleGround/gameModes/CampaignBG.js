@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import BattleHero from "../../../unitsScripts/BattleHero";
-import Enemy from "../../../unitsScripts/Enemy";
+import Enemy from "../../../unitsScripts/Enemy"
+import {useNavigate}  from "react-router-dom"
+
 
 const CampaignBG = (props) => {
 
@@ -12,10 +14,10 @@ const CampaignBG = (props) => {
     const enemyAtckAnimation=props.enemyAnimation[1]
     const enemyIdleAnimation=props.enemyAnimation[0]
     const sec=props.enemyAnimation[2]
-
+    const history=useNavigate()
 
     let [enemies, setEnemies] = React.useState(() => {
-        if (user.campaignLvl % 5 == 0) {
+        if (user.campaignLvl % 5 === 0) {
             return [{hp: 20, damage: 1, atkSpeed: 3000, defence: 10, key: Math.random()}]
         } else {
             return [{hp: 5, damage: 1, atkSpeed: 2000, defence: 1, key: Math.random(),animation:enemyIdleAnimation,idle:enemyIdleAnimation, atck:enemyAtckAnimation},
@@ -35,14 +37,15 @@ const CampaignBG = (props) => {
     }
 
     function checkNoBack(timer) {
-        if (window.location.href !== 'http://localhost:3000/BattleGround/CampaignBG') {
+        if (window.location.pathname !== "/BattleGround/CampaignBG") {
+            history('/Map')
             clearInterval(timer)
         }
     }
 
     useEffect(() => {
         if (!props.bgLoad) {
-            window.location.href = "http://localhost:3000/map"
+            history('/Map')
         }
         for (let hero of heroes) {
             props.addStats(hero)
@@ -93,7 +96,7 @@ const CampaignBG = (props) => {
 
     useEffect(() => {
         if (winCheck.current === true) {
-            window.history.back(-1)
+            history('/Map')
             setUser({
                 ...user,
                 modalText: 'iziPizi sosite mobi',
@@ -103,7 +106,7 @@ const CampaignBG = (props) => {
             })
         }
         if (winCheck.current === false) {
-            window.history.back(-1)
+            history('/Map')
             setUser({...user, modalVision: true, modalText: 'better luck next time('})
         }
     }, [winCheck.current])

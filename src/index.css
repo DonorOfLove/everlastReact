@@ -56,7 +56,9 @@ a {
 .store{
     background-image: url("assets/backgrounds/store.png");
     height: 100%;
+    background-position: center;
     background-size: cover;
+    justify-content: space-around;
 }
 .chest {
 
@@ -81,7 +83,9 @@ a {
 
 .heroesBG{
     background-image: url("assets/backgrounds/heroes.gif");
-    background-size:cover;
+    background-position: center;
+    background-size: cover;
+    justify-content: space-around;
     height: 100%;
 }
 .heroes {
@@ -101,10 +105,13 @@ a {
 
 .main {
     overflow-y: auto; /*Вертикальная полоса прокрутки для текста*/
-
     text-align: justify; /*выравнивание текста по левому и правому краям*/
     flex-grow: 1; /*Предписываем занять все свободное пространство*/
     background-color: #191d24;
+    background-image: url("assets/backgrounds/map.gif");
+    background-size: cover;
+
+    background-position: unset;
 }
 
 .footer {
@@ -124,6 +131,7 @@ a {
     border: 3px solid #775295;
     width: 34%;
     text-align: center;
+    height: 100%;
 
 }
 
@@ -134,6 +142,7 @@ a {
 }
 
 .hero {
+    min-width: 50px;
     border: 2px solid #6b4a8e;
     width:5vw;
     display: flex;
@@ -153,10 +162,6 @@ a {
     margin: -0.1vw 0.5vw 2vw -0.2vw;
     transition: 0.3s;
     position: marker;
-}
-
-.hero_margin {
-    background-color: #5b377d;
 }
 
 .hp__bar {
@@ -193,8 +198,8 @@ a {
 
 .everlastBG {
     background-image: url("assets/backgrounds/everlast.gif");
-    background-size: 95%;
-    background-position-y: -10vw;
+  background-size: cover;
+    background-position:center;
 
 }
 
@@ -343,5 +348,41 @@ a {
     .CampaignBG{
         background-size: cover;
         padding-bottom: 10vw;
+    }
+}
+@media (max-width: 450px) {
+    body{
+        font-size: 8vw;
+    }
+    .footer{
+        height: 10vw;
+        align-items: center;
+        line-height: 10vw;
+    }
+    .modal-content{
+        font-size: 6vw;
+        width: 80%;
+    }
+    .modal__button{
+        font-size: 7vw;
+    }
+    .stats{
+        font-size: 5vw;
+    }
+    .chest{font-size: 8vw}
+
+    .BattleHero img{
+        width: 37vw;
+    }
+    .immortal{
+        margin-right: -30vw;
+        width: 120vw;
+
+    }
+.enemy{
+    width: 30%;
+}
+    .enemy img{
+        width: 30vw;
     }
 }

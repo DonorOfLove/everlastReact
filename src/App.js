@@ -1,4 +1,4 @@
-import './App.css';
+
 import React, {useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom'
 import BattleGround from "./Components/battleGround/BattleGround";
@@ -9,7 +9,7 @@ import whitchAtck from "./assets/animations/heroAnimations/witch_atck.gif"
 import whitchIcon from "./assets/heroIcons/witch_icon.png"
 import warriorIdle from "./assets/animations/heroAnimations/warrior_idle.gif"
 import warriorAtck from "./assets/animations/heroAnimations/warrior_atck.gif"
-// import warriorIcon from "./assets/heroIcons/warrior_icon.png
+import warriorIcon from "./assets/heroIcons/warrior_icon.png"
 import shughekuAtck from "./assets/animations/heroAnimations/shugheku_atck.gif"
 import shughekuIdle from "./assets/animations/heroAnimations/shugheku_idle.gif"
 import shughekuIcon from "./assets/heroIcons/shugheku_icon.png"
@@ -35,7 +35,7 @@ function App() {
             lvl: 1,
             id: Math.random(),
             key: Math.random(),
-            // icon:warriorIcon,
+            icon:warriorIcon,
             animation: warriorIdle,
             atck: warriorAtck,
             idle: warriorIdle,
