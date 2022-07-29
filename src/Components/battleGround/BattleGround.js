@@ -67,7 +67,7 @@ const BattleGround = (props) => {
                                                                     user={user}
                                                                     addStats={addAdditionalStats}
                                                                     bgLoad={bgLoad}
-                                                                    enemyAnimation={randomEnemyAnimation()}/>}
+                                                                    enemyAnimation={randomEnemyAnimation}/>}
                 />
                 <Route path='Immortal' element={<Immortal state={props}
                                                           heroAtckAnimaton={heroAtckAnimation}

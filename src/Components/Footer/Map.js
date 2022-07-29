@@ -38,7 +38,7 @@ const Map = (props) => {
                 })}
             </div>
             {heroes.length>0?(  <div className='level__option'>
-                <Link to='/BattleGround/EverlastTower'>Everlast Tower</Link>
+                {/*<Link to='/BattleGround/EverlastTower'>coming soon</Link>*/}
                 <Link to='/BattleGround/CampaignBG'>level: {user.campaignLvl}</Link>
                 {dataCheck>24?(<Link to='/BattleGround/Immortal'>Immortal</Link>):(`come back in ${Math.round(24-dataCheck)} hours`)}
             </div>):(<div>You need at least 1 hero on your camp to start</div>)}

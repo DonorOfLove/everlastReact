@@ -99,7 +99,7 @@ const CampaignBG = (props) => {
             history('/Map')
             setUser({
                 ...user,
-                modalText: 'iziPizi sosite mobi',
+                modalText: `You win, your reward ${user.campaignLvl*100} gold`,
                 modalVision: true,
                 gold: user.campaignLvl * 100,
                 campaignLvl: user.campaignLvl + 1

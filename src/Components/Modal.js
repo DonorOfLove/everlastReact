@@ -2,13 +2,19 @@ import React from 'react';
 
 const Modal = ({setUser, user}) => {
 
+
+
     React.useEffect(() => {
-        window.addEventListener('keydown', (e) => {
-            if (e.key == 'Escape' || e.key == 'Enter') {
-                setUser({...user, modalVision: false})
-            }
-        })
+        if (user.firstVisit) {
+        } else {
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' || e.key === 'Enter') {
+                    setUser({...user, modalVision: false})
+                }
+            })
+        }
     }, [])
+
 
     return (
         <div className='modal'>
