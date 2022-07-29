@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "398c653cbc59fb422ec6ae60e59ad63a",
+    "revision": "61a7500a4f204b98e844bcc7eb7a44d2",
     "url": "/everlastReact/index.html"
   },
   {
-    "revision": "321bad15fac5bc5c0075",
-    "url": "/everlastReact/static/css/main.37abceae.chunk.css"
+    "revision": "e9639efd3fff074790a9",
+    "url": "/everlastReact/static/css/main.a728d80e.chunk.css"
   },
   {
     "revision": "6b1f609b3c4930ade747",
     "url": "/everlastReact/static/js/2.afb56943.chunk.js"
   },
   {
-    "revision": "321bad15fac5bc5c0075",
-    "url": "/everlastReact/static/js/main.6e49f1b2.chunk.js"
+    "revision": "e9639efd3fff074790a9",
+    "url": "/everlastReact/static/js/main.b30d524f.chunk.js"
   },
   {
     "revision": "762ca94febf6d3194fa6",
